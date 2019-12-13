@@ -4,7 +4,7 @@ import { jsx, css } from '@emotion/core';
 
 function Input({ id, label, type, value, width, fullWidth, onChange }) {
   return (
-    <div css={inputStyle(width, fullWidth)}>
+    <div css={[inputStyle(width, fullWidth)]}>
       <label htmlFor={id}>{label}</label>
       <input id={id} type={type} value={value} onChange={onChange} />
     </div>

@@ -14,6 +14,7 @@ function index({ children }) {
 }
 
 const mainStyle = css`
+  display: block;
   max-width: 1280px;
   margin: 0 auto;
   padding: 24px 15px;

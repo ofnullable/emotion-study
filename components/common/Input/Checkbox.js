@@ -4,7 +4,7 @@ import { jsx, css } from '@emotion/core';
 function Checkbox({ id, label, checked, onChange }) {
   return (
     <div css={[checkbox]}>
-      <input type="checkbox" id={id} checked={checked} onChange={onChange} />
+      <input type='checkbox' id={id} checked={checked} onChange={onChange} />
       <label htmlFor={id}>{label}</label>
     </div>
   );
@@ -17,15 +17,17 @@ const checkbox = css`
   }
 
   label {
-    display: inline-block;
     cursor: pointer;
+    display: flex;
+    align-items: center;
   }
 
   input + label::before {
     content: '';
     color: #fafafa;
-    display: inline-block;
-    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 1.2rem;
     height: 1.2rem;
     background: #eeeeee;
@@ -34,8 +36,7 @@ const checkbox = css`
   }
 
   input:checked + label::before {
-    content: 'X';
-    text-align: center;
+    content: '✔';
     background: #1565c0;
   }
 `;
