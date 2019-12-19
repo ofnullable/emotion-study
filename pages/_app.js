@@ -18,12 +18,12 @@ class MyApp extends App {
     return (
       <>
         <Head>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+          <meta charSet='utf-8' />
+          <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+          <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
           <link
-            href="https://fonts.googleapis.com/css?family=Fira+Code|Noto+Sans+KR&display=swap&subset=korean"
-            rel="stylesheet"
+            href='https://fonts.googleapis.com/css?family=Fira+Code|Noto+Sans+KR&display=swap&subset=korean'
+            rel='stylesheet'
           />
         </Head>
         <Global styles={GlobalStyle} />

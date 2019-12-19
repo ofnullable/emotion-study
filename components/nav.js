@@ -14,13 +14,13 @@ const links = [
 const Nav = () => {
   return (
     <nav>
-      <ButtonGroup position="center">
+      <ButtonGroup position='center'>
         <Button>BUTTON</Button>
-        <Button theme="secondary">BUTTON</Button>
+        <Button theme='secondary'>BUTTON</Button>
       </ButtonGroup>
       <ul>
         <li>
-          <Link href="/" as="/">
+          <Link href='/' as='/'>
             <a>Home</a>
           </Link>
         </li>

@@ -33,12 +33,12 @@ function directory() {
     <>
       <Dialog
         visible={dialogVisible}
-        title="테스트 다이얼로그"
-        content="dialog content"
+        title='테스트 다이얼로그'
+        content='dialog content'
         cancelHandler={closeDialog}
       >
-        <ButtonGroup horizontal position="right">
-          <Button theme="secondary" onClick={closeDialog}>
+        <ButtonGroup horizontal position='right'>
+          <Button theme='secondary' onClick={closeDialog}>
             취소
           </Button>
           <Button onClick={confirmDialog}>확인</Button>

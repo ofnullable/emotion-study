@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const menus = {
   brand: {
@@ -48,7 +49,6 @@ function HeaderMenu() {
   const handleMenuClick = e => {
     const id = e.target.id === 'brand' ? 'dashboard' : e.target.id;
     setActive(id);
-    router.push(menus[id].href);
   };
 
   return (
@@ -56,9 +56,11 @@ function HeaderMenu() {
       <ul css={[HeaderMenuStyle]}>
         {Object.keys(menus).map(menu => (
           <li key={menu} id={menu} className={active === menu ? 'active' : ''}>
-            <span id={menu} onClick={handleMenuClick}>
-              {menus[menu].name}
-            </span>
+            <Link href={menus[menu].href} as={menus[menu].href}>
+              <span id={menu} onClick={handleMenuClick}>
+                <a id={menu}>{menus[menu].name}</a>
+              </span>
+            </Link>
           </li>
         ))}
         <ul css={[HeaderIconStyle]}>
