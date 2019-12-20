@@ -3,6 +3,7 @@ import React, { useState, useCallback } from 'react';
 import Input from '../components/common/Input/Input';
 import InputGroup from '../components/common/Input/InputGroup';
 import Checkbox from '../components/common/Input/Checkbox';
+import TextEditor from '../components/common/TextEditor';
 
 function inbox() {
   const [input, setInput] = useState('');
@@ -27,6 +28,7 @@ function inbox() {
         <Input id='2' label='input2' value={input} width='50%' onChange={handleChange} />
       </InputGroup>
       <Checkbox id='3' label='checkbox test' checked={checked} onChange={handleCheckboxChange} />
+      <TextEditor />
     </>
   );
 }
