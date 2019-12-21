@@ -39,7 +39,7 @@ function HeaderMenu() {
   useEffect(() => {
     const oneDepth = router.pathname.split('/');
 
-    if (!oneDepth[1] || oneDepth[1] === 'brand') {
+    if ((!active && !oneDepth[1]) || oneDepth[1] === 'brand') {
       setActive('dashboard');
     } else {
       setActive(oneDepth[1]);
@@ -55,11 +55,14 @@ function HeaderMenu() {
     <header>
       <ul css={[HeaderMenuStyle]}>
         {Object.keys(menus).map(menu => (
-          <li key={menu} id={menu} className={active === menu ? 'active' : ''}>
-            <Link href={menus[menu].href} as={menus[menu].href}>
-              <span id={menu} onClick={handleMenuClick}>
-                <a id={menu}>{menus[menu].name}</a>
-              </span>
+          <li
+            key={menu}
+            id={menu}
+            className={active === menu ? 'active' : ''}
+            onClick={handleMenuClick}
+          >
+            <Link href={menus[menu].href}>
+              <a id={menu}>{menus[menu].name}</a>
             </Link>
           </li>
         ))}
@@ -118,11 +121,13 @@ const HeaderMenuStyle = css`
       }
     }
 
-    span {
+    a {
       display: flex;
       align-items: center;
       height: 100%;
       padding: 15px;
+      text-decoration: none;
+      color: inherit;
     }
   }
 `;

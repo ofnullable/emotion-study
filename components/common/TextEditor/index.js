@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import 'codemirror/lib/codemirror.css';
-import 'tui-editor/dist/tui-editor.min.css';
-import 'tui-editor/dist/tui-editor-contents.min.css';
-
 function TextEditor() {
   const [Tui, setTui] = useState(null);
 

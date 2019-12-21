@@ -6,6 +6,10 @@ import { Global } from '@emotion/core';
 import Layout from '../components/Layout';
 import { GlobalStyle } from '../style/global';
 
+import 'codemirror/lib/codemirror.css';
+import 'tui-editor/dist/tui-editor.min.css';
+import 'tui-editor/dist/tui-editor-contents.min.css';
+
 class MyApp extends App {
   //   static async getInitialProps(appContext) {
   //     // calls page's `getInitialProps` and fills `appProps.pageProps`
