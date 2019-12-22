@@ -11,7 +11,6 @@ export const GlobalStyle = css`
   }
   body {
     margin: 0;
-    height: 150vh;
   }
   html,
   body {
