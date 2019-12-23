@@ -14,6 +14,7 @@ Button.defaultProps = {
 };
 
 const button = css`
+  font-family: inherit;
   cursor: pointer;
   display: inline-block;
   vertical-align: middle;

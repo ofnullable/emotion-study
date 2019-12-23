@@ -11,7 +11,7 @@ function TextEditor() {
     }
   }, []);
 
-  return <>{Tui && <Tui.Editor />}</>;
+  return Tui && <Tui.Editor />;
 }
 
 export default TextEditor;
