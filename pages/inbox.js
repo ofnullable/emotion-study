@@ -19,10 +19,32 @@ function inbox() {
 
   return (
     <>
-      <Input id='something' label='test input' value={input} fullWidth onChange={handleChange} />
+      <Input
+        id='primaryinput'
+        theme='primary'
+        label='primary input'
+        value={input}
+        fullWidth
+        onChange={handleChange}
+      />{' '}
+      <Input
+        id='errorinput'
+        theme='error'
+        label='error input'
+        value={input}
+        fullWidth
+        onChange={handleChange}
+      />
       <InputGroup>
         <Input id='1' label='input1' value={input} width='50%' onChange={handleChange} />
-        <Input id='2' label='input2' value={input} width='50%' onChange={handleChange} />
+        <Input
+          id='2'
+          theme='secondary'
+          label='input2'
+          value={input}
+          width='50%'
+          onChange={handleChange}
+        />
       </InputGroup>
       <InputGroup>
         <Checkbox
