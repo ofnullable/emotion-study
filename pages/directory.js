@@ -1,51 +1,85 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import Dialog from '../components/common/Dialog';
 import Button from '../components/common/Button/Button';
 import ButtonGroup from '../components/common/Button/ButtonGroup';
 import { useWindowEvent } from '../util/utils';
 
+function DialogChildren({ theme, closeDialog, confirmDialog }) {
+  return (
+    <ButtonGroup horizontal position='right'>
+      <Button theme='secondary' onClick={closeDialog}>
+        취소
+      </Button>
+      <Button theme={theme} onClick={confirmDialog}>
+        확인
+      </Button>
+    </ButtonGroup>
+  );
+}
+
 function directory() {
-  const [dialogVisible, setDialogVisible] = useState(false);
+  const [primaryDialog, setPrimaryDialog] = useState(false);
+  const [errorDialog, setErrorDialog] = useState(false);
 
   const keydownHandler = e => {
-    if (dialogVisible && e.keyCode === 27) {
-      setDialogVisible(false);
+    if (primaryDialog && e.keyCode === 27) {
+      setPrimaryDialog(false);
     }
   };
 
-  useWindowEvent('keydown', keydownHandler, [dialogVisible]);
+  useWindowEvent('keydown', keydownHandler, [primaryDialog, errorDialog]);
 
-  const openDialog = () => {
-    setDialogVisible(true);
-  };
-
-  const closeDialog = useCallback(e => {
+  const closePrimaryDialog = useCallback(e => {
     e.stopPropagation();
-    setDialogVisible(false);
+    setPrimaryDialog(false);
   }, []);
 
-  const confirmDialog = e => {
+  const closeErrorDialog = useCallback(e => {
+    e.stopPropagation();
+    setErrorDialog(false);
+  }, []);
+
+  const confirmPrimaryDialog = e => {
     alert('confirmed!');
-    setDialogVisible(false);
+    setPrimaryDialog(false);
+  };
+  const confirmErrorDialog = e => {
+    alert('confirmed!');
+    setErrorDialog(false);
   };
 
   return (
     <>
       <Dialog
-        visible={dialogVisible}
+        visible={primaryDialog}
         title='테스트 다이얼로그'
         content='dialog content'
-        cancelHandler={closeDialog}
+        cancelHandler={closePrimaryDialog}
       >
-        <ButtonGroup horizontal position='right'>
-          <Button theme='secondary' onClick={closeDialog}>
-            취소
-          </Button>
-          <Button onClick={confirmDialog}>확인</Button>
-        </ButtonGroup>
+        <DialogChildren closeDialog={closePrimaryDialog} confirmDialog={confirmPrimaryDialog} />
       </Dialog>
 
-      <Button onClick={openDialog}>다이얼로그 열기</Button>
+      <Dialog
+        visible={errorDialog}
+        theme='error'
+        title='테스트 다이얼로그'
+        content='dialog content'
+        cancelHandler={closeErrorDialog}
+      >
+        <DialogChildren
+          theme='error'
+          closeDialog={closeErrorDialog}
+          confirmDialog={confirmErrorDialog}
+        />
+      </Dialog>
+
+      <ButtonGroup horizontal>
+        <Button onClick={() => setPrimaryDialog(true)}>다이얼로그 열기</Button>
+
+        <Button theme='error' onClick={() => setErrorDialog(true)}>
+          다이얼로그 열기
+        </Button>
+      </ButtonGroup>
     </>
   );
 }

@@ -1,14 +1,14 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 
-function Dialog({ visible, title, content, children, cancelHandler, ...rest }) {
+function Dialog({ visible, theme, title, content, children, cancelHandler, ...rest }) {
   if (!visible) return null;
 
   return (
     <>
       <div css={[fullscreen, darkLayer]} onClick={cancelHandler} />
       <div css={[dialogWrapper]}>
-        <div css={dialog}>
+        <div css={[dialog, themes[theme]]}>
           {title && <h3>{title}</h3>}
           {content && <p>{content}</p>}
           {children}
@@ -17,6 +17,10 @@ function Dialog({ visible, title, content, children, cancelHandler, ...rest }) {
     </>
   );
 }
+
+Dialog.defaultProps = {
+  theme: 'primary',
+};
 
 const fullscreen = css`
   position: absolute;
@@ -51,7 +55,6 @@ const dialog = css`
 
   h3 {
     font-size: 1.5rem;
-    color: #1565c0;
     margin-top: 0;
     margin-bottom: 1rem;
   }
@@ -60,8 +63,31 @@ const dialog = css`
     font-size: 1.125rem;
     margin: 0;
     padding: 20px 0;
-    color: #424242;
+    color: #282828;
   }
 `;
+
+const themes = {
+  default: css`
+    h3 {
+      color: inherit;
+    }
+  `,
+  primary: css`
+    h3 {
+      color: #1565c0;
+    }
+  `,
+  secondary: css`
+    h3 {
+      color: #999;
+    }
+  `,
+  error: css`
+    h3 {
+      color: #e60000;
+    }
+  `,
+};
 
 export default Dialog;

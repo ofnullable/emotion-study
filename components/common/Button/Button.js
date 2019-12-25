@@ -3,7 +3,7 @@ import { jsx, css } from '@emotion/core';
 
 function Button({ theme, disabled, children, ...rest }) {
   return (
-    <button css={[button, palette[theme]]} disabled={disabled} {...rest}>
+    <button css={[button, themes[theme]]} disabled={disabled} {...rest}>
       {children}
     </button>
   );
@@ -29,7 +29,7 @@ const button = css`
   }
 `;
 
-const palette = {
+const themes = {
   primary: css`
     color: #fafafa;
     background: #1565c0;
@@ -42,13 +42,23 @@ const palette = {
     }
   `,
   secondary: css`
-    color: #0d47a1;
+    color: #282828;
     background: #fafafa;
     &:hover:enabled {
       background: #eeeeee;
     }
     &:disabled {
       color: #90caf9;
+    }
+  `,
+  error: css`
+    color: #fafafa;
+    background: #e60000;
+    &:hover {
+      background: #b30000;
+    }
+    &:disabled {
+      background: #ff6666;
     }
   `,
 };
