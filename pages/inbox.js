@@ -26,7 +26,7 @@ function inbox() {
         value={input}
         fullWidth
         onChange={handleChange}
-      />{' '}
+      />
       <Input
         id='errorinput'
         theme='error'
@@ -36,11 +36,11 @@ function inbox() {
         onChange={handleChange}
       />
       <InputGroup>
-        <Input id='1' label='input1' value={input} width='50%' onChange={handleChange} />
+        <Input id='1' label='default input' value={input} width='50%' onChange={handleChange} />
         <Input
           id='2'
           theme='secondary'
-          label='input2'
+          label='secondary input'
           value={input}
           width='50%'
           onChange={handleChange}
