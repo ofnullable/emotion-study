@@ -29,11 +29,6 @@ app.prepare().then(() => {
     })
   );
 
-  // TODO: After make index page, remove this function
-  server.get('/', async (req, res) => {
-    return res.redirect('/dashboard');
-  });
-
   server.all('*', async (req, res) => {
     return handle(req, res);
   });
