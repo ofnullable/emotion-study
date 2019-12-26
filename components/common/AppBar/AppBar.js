@@ -8,19 +8,20 @@ function HeaderMenu({ menus }) {
   const [active, setActive] = useState();
   const router = useRouter();
 
+  const menuNames = Object.keys(menus);
+
   useEffect(() => {
     const oneDepth = router.pathname.split('/');
 
-    if ((!active && !oneDepth[1]) || oneDepth[1] === 'brand') {
-      setActive('dashboard');
+    if ((!active && !oneDepth[1]) || oneDepth[1] === menuNames[0]) {
+      setActive(null);
     } else {
       setActive(oneDepth[1]);
     }
   }, []);
 
   const handleMenuClick = e => {
-    const menuNames = Object.keys(menus);
-    const id = e.target.id === menuNames[0] ? menuNames[1] : e.target.id;
+    const id = e.target.id === menuNames[0] ? null : e.target.id;
     setActive(id);
   };
 
@@ -69,13 +70,15 @@ const itemStyle = css`
   height: 100%;
   flex-direction: column;
 
-  &:not(#brand)::after {
+  &::after {
     content: '';
-    display: block;
-    width: 100%;
     transition: transform 200ms ease;
     transform: scaleX(0);
-    border-bottom: 4px solid #1976d2;
+    border-bottom: 3px solid;
+  }
+
+  &:not(#brand)::after {
+    border-color: #1976d2;
   }
 
   &#brand {
@@ -89,6 +92,10 @@ const itemStyle = css`
       content: '';
       transform: scaleX(1);
     }
+  }
+
+  &:not(#brand).active {
+    background: #686868;
   }
 
   a {

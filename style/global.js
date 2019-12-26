@@ -41,9 +41,6 @@ export const GlobalStyle = css`
   strong {
     font-weight: bolder;
   }
-  code {
-    padding: 15px;
-  }
   code,
   kbd,
   samp {
@@ -51,6 +48,7 @@ export const GlobalStyle = css`
     font-family: 'Fira code', monospace;
     background-color: #eeeeee;
     border-radius: 5px;
+    padding: 2px 5px;
   }
   small {
     font-size: 80%;

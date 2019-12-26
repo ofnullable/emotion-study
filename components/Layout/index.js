@@ -5,12 +5,8 @@ import Footer from './Footer';
 
 const menus = {
   brand: {
-    href: '/dashboard',
+    href: '/',
     name: 'BRANDNAME',
-  },
-  dashboard: {
-    href: '/dashboard',
-    name: 'hacker dashboard',
   },
   hacktivity: {
     href: '/hacktivity',
