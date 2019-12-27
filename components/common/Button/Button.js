@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import { colors } from '../../../style/colors';
 
 function Button({ theme, disabled, children, ...rest }) {
   return (
@@ -31,34 +32,33 @@ const button = css`
 
 const themes = {
   primary: css`
-    color: #fafafa;
-    background: #1565c0;
+    color: ${colors.gray[0]};
+    background: ${colors.primary[5]};
     &:hover {
-      background: #0d47a1;
+      background: ${colors.primary[6]};
     }
     &:disabled {
-      color: #eeeeee;
-      background: #0288d1;
+      background: ${colors.primary[3]};
     }
   `,
   secondary: css`
-    color: #282828;
-    background: #fafafa;
+    color: ${colors.gray[9]};
+    background: ${colors.secondary[1]};
     &:hover:enabled {
-      background: #eeeeee;
+      background: ${colors.secondary[3]};
     }
     &:disabled {
-      color: #90caf9;
+      color: ${colors.secondary[4]};
     }
   `,
   error: css`
-    color: #fafafa;
-    background: #e60000;
+    color: ${colors.gray[0]};
+    background: ${colors.error[4]};
     &:hover {
-      background: #b30000;
+      background: ${colors.error[6]};
     }
     &:disabled {
-      background: #ff6666;
+      background: ${colors.error[2]};
     }
   `,
 };

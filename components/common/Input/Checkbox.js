@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import { colors } from '../../../style/colors';
 
 function Checkbox({ id, theme, label, checked, onChange }) {
   return (
@@ -33,8 +34,9 @@ const checkbox = css`
     justify-content: center;
     width: 1.2rem;
     height: 1.2rem;
-    border-radius: 5px;
+    border-radius: 4px;
     margin-right: 5px;
+    background: ${colors.gray[0]};
   }
 
   input:checked + label::before {
@@ -45,24 +47,29 @@ const checkbox = css`
 const themes = {
   primary: css`
     input + label::before {
-      content: '';
-      color: #fafafa;
-      background: #eeeeee;
+      color: ${colors.gray[0]};
     }
 
     input:checked + label::before {
-      background: #1565c0;
+      background: ${colors.primary[5]};
     }
   `,
   secondary: css`
     input + label::before {
-      content: '';
-      color: #0d47a1;
-      background: #fafafa;
+      color: ${colors.primary[5]};
     }
 
     input:checked + label::before {
-      background: #eeeeee;
+      background: ${colors.gray[1]};
+    }
+  `,
+  error: css`
+    input + label::before {
+      color: ${colors.gray[0]};
+    }
+
+    input:checked + label::before {
+      background: ${colors.error[4]};
     }
   `,
 };
