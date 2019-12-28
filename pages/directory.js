@@ -19,6 +19,7 @@ function DialogChildren({ theme, closeDialog, confirmDialog }) {
 
 function directory() {
   const [primaryDialog, setPrimaryDialog] = useState(false);
+  const [secondaryDialog, setSecondaryDialog] = useState(false);
   const [errorDialog, setErrorDialog] = useState(false);
 
   const keydownHandler = e => {
@@ -34,17 +35,28 @@ function directory() {
     setPrimaryDialog(false);
   }, []);
 
+  const closeSecondaryDialog = useCallback(e => {
+    e.stopPropagation();
+    setSecondaryDialog(false);
+  }, []);
+
   const closeErrorDialog = useCallback(e => {
     e.stopPropagation();
     setErrorDialog(false);
   }, []);
 
   const confirmPrimaryDialog = e => {
-    alert('confirmed!');
+    alert('primary confirmed!');
     setPrimaryDialog(false);
   };
+
+  const confirmSecondaryDialog = e => {
+    alert('secondary confirmed!');
+    setSecondaryDialog(false);
+  };
+
   const confirmErrorDialog = e => {
-    alert('confirmed!');
+    alert('erro confirmed!');
     setErrorDialog(false);
   };
 
@@ -57,6 +69,16 @@ function directory() {
         cancelHandler={closePrimaryDialog}
       >
         <DialogChildren closeDialog={closePrimaryDialog} confirmDialog={confirmPrimaryDialog} />
+      </Dialog>
+
+      <Dialog
+        visible={secondaryDialog}
+        theme='secondary'
+        title='테스트 다이얼로그'
+        content='dialog content'
+        cancelHandler={closeSecondaryDialog}
+      >
+        <DialogChildren closeDialog={closeSecondaryDialog} confirmDialog={confirmSecondaryDialog} />
       </Dialog>
 
       <Dialog
@@ -75,6 +97,9 @@ function directory() {
 
       <ButtonGroup horizontal>
         <Button onClick={() => setPrimaryDialog(true)}>다이얼로그 열기</Button>
+        <Button theme='secondary' onClick={() => setSecondaryDialog(true)}>
+          다이얼로그 열기
+        </Button>
 
         <Button theme='error' onClick={() => setErrorDialog(true)}>
           다이얼로그 열기

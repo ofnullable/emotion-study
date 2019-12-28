@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import { colors } from '../../../style/colors';
 
 function Dialog({ visible, theme, title, content, children, cancelHandler, ...rest }) {
   if (!visible) return null;
@@ -75,17 +76,17 @@ const themes = {
   `,
   primary: css`
     h3 {
-      color: #1565c0;
+      color: ${colors.primary[5]};
     }
   `,
   secondary: css`
     h3 {
-      color: #999;
+      color: ${colors.secondary[5]};
     }
   `,
   error: css`
     h3 {
-      color: #e60000;
+      color: ${colors.error[4]};
     }
   `,
 };
