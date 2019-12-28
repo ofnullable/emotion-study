@@ -1,6 +1,7 @@
 import React from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import { colors } from '../../../style/colors';
 
 function Input({ id, theme, label, type, value, width, fullWidth, onChange }) {
   return (
@@ -38,25 +39,25 @@ const inputStyle = (width, fullWidth) => css`
 const themes = {
   default: css`
     & + input {
-      border: 1px solid #000;
+      border: 1px solid ${colors.gray[9]};
     }
   `,
   primary: css`
-    color: #1565c0;
+    color: ${colors.primary[5]};
     & + input {
-      border: 1px solid #1565c0;
+      border: 1px solid ${colors.primary[5]};
     }
   `,
   secondary: css`
-    color: #999;
+    color: ${colors.secondary[5]};
     & + input {
-      border: 1px solid #999999;
+      border: 1px solid ${colors.secondary[5]};
     }
   `,
   error: css`
-    color: red;
+    color: ${colors.error[4]};
     & + input {
-      border: 1px solid red;
+      border: 1px solid ${colors.error[4]};
     }
   `,
 };

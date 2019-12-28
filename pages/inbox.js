@@ -9,6 +9,7 @@ function inbox() {
   const [input, setInput] = useState('');
   const [checked1, setChecked1] = useState(true);
   const [checked2, setChecked2] = useState(true);
+  const [checked3, setChecked3] = useState(true);
 
   const handleChange = useCallback(
     ({ target }) => {
@@ -60,6 +61,13 @@ function inbox() {
           checked={checked2}
           onChange={() => setChecked2(prev => !prev)}
           theme='secondary'
+        />
+        <Checkbox
+          id='5'
+          label='error checkbox'
+          checked={checked3}
+          onChange={() => setChecked3(prev => !prev)}
+          theme='error'
         />
       </InputGroup>
       <TextEditor />
