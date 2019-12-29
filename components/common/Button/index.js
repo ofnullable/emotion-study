@@ -61,6 +61,18 @@ const themes = {
       background: ${colors.error[2]};
     }
   `,
+  link: css`
+    color: ${colors.primary[5]};
+    background: ${colors.gray[0]};
+    &:hover {
+      color: ${colors.primary[6]};
+      background: ${colors.gray[1]};
+    }
+    &:disabled {
+      color: ${colors.primary[3]};
+      background: ${colors.gray[0]};
+    }
+  `,
 };
 
 export default Button;
