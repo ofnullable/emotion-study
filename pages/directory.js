@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import Dialog from '../components/common/Dialog';
-import Button from '../components/common/Button/Button';
+import Button from '../components/common/Button';
 import ButtonGroup from '../components/common/Button/ButtonGroup';
 import { useWindowEvent } from '../util/utils';
 

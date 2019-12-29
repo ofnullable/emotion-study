@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Link from 'next/link';
-import Button from './common/Button/Button';
+import Button from './common/Button';
 import ButtonGroup from './common/Button/ButtonGroup';
 
 const links = [
@@ -16,6 +16,7 @@ const Nav = () => {
     <nav>
       <ButtonGroup position='center'>
         <Button>BUTTON</Button>
+        <Button theme='link'>BUTTON</Button>
         <Button theme='secondary'>BUTTON</Button>
       </ButtonGroup>
       <ul>
