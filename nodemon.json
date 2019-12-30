@@ -1,5 +1,10 @@
 {
- "watch": ["nodemon.json", "next.config.js", ".babelrc"],
- "exec": "node server.js",
- "ext": "js json jsx"
+    "watch": [
+        "server.js",
+        "nodemon.json",
+        "next.config.js",
+        ".babelrc"
+    ],
+    "exec": "cross-env NODE_ENV=development node server.js",
+    "ext": "js json jsx"
 }

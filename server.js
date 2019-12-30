@@ -10,18 +10,20 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 // require('dotenv').config();
 
+const COOKIE_SECRET = 'abcdefghijklmnopqrstuvwxyz9876543210'
+
 app.prepare().then(() => {
   const server = express();
 
   server.use('/', express.static('/public'));
   server.use(express.json());
   server.use(express.urlencoded({ extended: true }));
-  server.use(cookieParser());
+  server.use(cookieParser(COOKIE_SECRET));
   server.use(
     expressSession({
       resave: false,
       saveUninitialized: false,
-      secret: 'abcdefghijklmnopqrstuvwxyz9876543210',
+      secret: COOKIE_SECRET,
       cookie: {
         httpOnly: true,
         secure: !dev,
