@@ -2,14 +2,18 @@
 import { jsx, css } from '@emotion/core';
 
 function InputGroup({ horizontal, rightAlign, gutter, children }) {
-  return <div css={[margin(horizontal, gutter), align(rightAlign)]}>{children}</div>;
+  return <div css={[groupStyle, margin(horizontal, gutter), align(rightAlign)]}>{children}</div>;
 }
 
 InputGroup.defaultProps = {
   horizontal: true,
   rightAlign: false,
-  gutter: '15px',
+  gutter: '16px',
 };
+
+const groupStyle = css`
+  margin-bottom: 1rem;
+`;
 
 const margin = (horizontal, gutter) => {
   const flexDirection = horizontal ? `flex-direction: row` : `flex-direction: column`;

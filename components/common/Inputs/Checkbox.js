@@ -16,7 +16,6 @@ Checkbox.defaultProps = {
 };
 
 const checkbox = css`
-  margin: 10px 0;
   input {
     display: none;
   }
@@ -35,7 +34,7 @@ const checkbox = css`
     width: 1.2rem;
     height: 1.2rem;
     border-radius: 4px;
-    margin-right: 5px;
+    margin-right: 4px;
     background: ${colors.gray[0]};
   }
 
