@@ -1,15 +1,17 @@
 import React, { useState, useCallback } from 'react';
 
-import Input from '../components/common/Input/Input';
-import InputGroup from '../components/common/Input/InputGroup';
-import Checkbox from '../components/common/Input/Checkbox';
+import Radio from '../components/common/Inputs/Radio';
 import TextEditor from '../components/common/TextEditor';
+import Checkbox from '../components/common/Inputs/Checkbox';
+import TextInput from '../components/common/Inputs/TextInput';
+import InputGroup from '../components/common/Inputs/InputGroup';
 
 function inbox() {
   const [input, setInput] = useState('');
   const [checked1, setChecked1] = useState(true);
   const [checked2, setChecked2] = useState(true);
   const [checked3, setChecked3] = useState(true);
+  const [radioChecked, setRadioChecked] = useState('primary');
 
   const handleChange = useCallback(
     ({ target }) => {
@@ -18,9 +20,13 @@ function inbox() {
     [input]
   );
 
+  const handleRadioChange = useCallback(({ target }) => {
+    setRadioChecked(target.id);
+  });
+
   return (
-    <>
-      <Input
+    <form>
+      <TextInput
         id='primaryinput'
         theme='primary'
         label='primary input'
@@ -28,7 +34,7 @@ function inbox() {
         fullWidth
         onChange={handleChange}
       />
-      <Input
+      <TextInput
         id='errorinput'
         theme='error'
         label='error input'
@@ -37,8 +43,8 @@ function inbox() {
         onChange={handleChange}
       />
       <InputGroup>
-        <Input id='1' label='default input' value={input} width='50%' onChange={handleChange} />
-        <Input
+        <TextInput id='1' label='default input' value={input} width='50%' onChange={handleChange} />
+        <TextInput
           id='2'
           theme='secondary'
           label='secondary input'
@@ -70,8 +76,26 @@ function inbox() {
           theme='error'
         />
       </InputGroup>
+      <InputGroup>
+        <Radio
+          id='primary'
+          label='primary radio'
+          checked={radioChecked === 'primary'}
+          onChange={handleRadioChange}
+          theme='primary'
+          value='radio checked'
+        />
+        <Radio
+          id='secondary'
+          label='secondary radio'
+          checked={radioChecked === 'secondary'}
+          onChange={handleRadioChange}
+          theme='secondary'
+          value='radio unchecked'
+        />
+      </InputGroup>
       <TextEditor />
-    </>
+    </form>
   );
 }
 

@@ -8,7 +8,7 @@ function ButtonGroup({ horizontal, position, gutter, children }) {
 ButtonGroup.defaultProps = {
   horizontal: true,
   position: 'left',
-  gutter: '15px',
+  gutter: '16px',
 };
 
 const margin = (horizontal, gutter) => {

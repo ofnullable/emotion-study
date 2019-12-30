@@ -47,7 +47,7 @@ const dialog = css`
   z-index: 15;
   position: absolute;
   top: 30%;
-  border-radius: 5px;
+  border-radius: 4px;
   width: 25rem;
   max-width: 90%;
   background: #fafafa;

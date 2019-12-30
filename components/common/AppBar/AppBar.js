@@ -83,7 +83,7 @@ const itemStyle = css`
 
   &#brand {
     font-size: 20px;
-    padding: 0 15px;
+    padding: 0 16px;
   }
 
   &:not(#brand).active,
@@ -102,7 +102,7 @@ const itemStyle = css`
     display: flex;
     align-items: center;
     height: 100%;
-    padding: 15px;
+    padding: 16px;
     text-decoration: none;
     color: inherit;
   }

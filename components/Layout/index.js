@@ -36,7 +36,7 @@ const mainStyle = css`
   display: block;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 24px 15px;
+  padding: 24px 16px;
 `;
 
 export default index;

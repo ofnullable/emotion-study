@@ -47,8 +47,8 @@ export const GlobalStyle = css`
     font-size: 1em;
     font-family: 'Fira code', monospace;
     background-color: #eeeeee;
-    border-radius: 5px;
-    padding: 2px 5px;
+    border-radius: 4px;
+    padding: 2px 4px;
   }
   small {
     font-size: 80%;
