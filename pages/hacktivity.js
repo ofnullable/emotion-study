@@ -9,9 +9,6 @@ import Link from 'next/link';
 function hacktivity() {
   return (
     <div>
-      <div>
-        <code>hacktivity</code>
-      </div>
       <Card>
         <CardHeader title='card title' subTitle='sub title' />
         <CardContent>
@@ -21,7 +18,7 @@ function hacktivity() {
         <CardFooter align='right'>
           <Link href='/inbox'>
             <a>
-              <Button theme='link'>Go to detail</Button>
+              <Button theme='link'>show details</Button>
             </a>
           </Link>
         </CardFooter>

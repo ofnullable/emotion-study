@@ -4,6 +4,13 @@ import Button from '../components/common/Button';
 import ButtonGroup from '../components/common/Button/ButtonGroup';
 import { useWindowEvent } from '../util/utils';
 
+const initial = {
+  primary: false,
+  secondary: false,
+  error: false,
+  default: false,
+};
+
 function DialogChildren({ theme, closeDialog, confirmDialog }) {
   return (
     <ButtonGroup horizontal position='right'>
@@ -18,90 +25,103 @@ function DialogChildren({ theme, closeDialog, confirmDialog }) {
 }
 
 function directory() {
-  const [primaryDialog, setPrimaryDialog] = useState(false);
-  const [secondaryDialog, setSecondaryDialog] = useState(false);
-  const [errorDialog, setErrorDialog] = useState(false);
+  const [dialogs, setDialogs] = useState(initial);
 
   const keydownHandler = e => {
-    if (primaryDialog && e.keyCode === 27) {
-      setPrimaryDialog(false);
+    if (e.keyCode === 27 && Object.values(dialogs).some(v => v)) {
+      // close All
+      setDialogs(initial);
     }
   };
 
-  useWindowEvent('keydown', keydownHandler, [primaryDialog, errorDialog]);
+  useWindowEvent('keydown', keydownHandler, [dialogs]);
 
-  const closePrimaryDialog = useCallback(e => {
-    e.stopPropagation();
-    setPrimaryDialog(false);
-  }, []);
+  const toggleDialog = useCallback(
+    theme => () => {
+      setDialogs(prev => ({
+        ...prev,
+        [theme]: !prev[theme],
+      }));
+    },
+    [dialogs]
+  );
 
-  const closeSecondaryDialog = useCallback(e => {
-    e.stopPropagation();
-    setSecondaryDialog(false);
-  }, []);
-
-  const closeErrorDialog = useCallback(e => {
-    e.stopPropagation();
-    setErrorDialog(false);
-  }, []);
-
-  const confirmPrimaryDialog = e => {
-    alert('primary confirmed!');
-    setPrimaryDialog(false);
-  };
-
-  const confirmSecondaryDialog = e => {
-    alert('secondary confirmed!');
-    setSecondaryDialog(false);
-  };
-
-  const confirmErrorDialog = e => {
-    alert('erro confirmed!');
-    setErrorDialog(false);
-  };
+  const confirmDialog = useCallback(
+    theme => () => {
+      alert(`${theme} dialog confirmed!`);
+      setDialogs(prev => ({
+        ...prev,
+        [theme]: false,
+      }));
+    },
+    [dialogs]
+  );
 
   return (
     <>
       <Dialog
-        visible={primaryDialog}
+        visible={dialogs.primary}
         title='테스트 다이얼로그'
         content='dialog content'
-        cancelHandler={closePrimaryDialog}
+        cancelHandler={toggleDialog('primary')}
       >
-        <DialogChildren closeDialog={closePrimaryDialog} confirmDialog={confirmPrimaryDialog} />
+        <DialogChildren
+          closeDialog={toggleDialog('primary')}
+          confirmDialog={confirmDialog('primary')}
+        />
       </Dialog>
 
       <Dialog
-        visible={secondaryDialog}
+        visible={dialogs.secondary}
         theme='secondary'
         title='테스트 다이얼로그'
         content='dialog content'
-        cancelHandler={closeSecondaryDialog}
+        cancelHandler={toggleDialog('secondary')}
       >
-        <DialogChildren closeDialog={closeSecondaryDialog} confirmDialog={confirmSecondaryDialog} />
+        <DialogChildren
+          closeDialog={toggleDialog('secondary')}
+          confirmDialog={confirmDialog('secondary')}
+        />
       </Dialog>
 
       <Dialog
-        visible={errorDialog}
+        visible={dialogs.error}
         theme='error'
         title='테스트 다이얼로그'
         content='dialog content'
-        cancelHandler={closeErrorDialog}
+        cancelHandler={toggleDialog('error')}
       >
         <DialogChildren
           theme='error'
-          closeDialog={closeErrorDialog}
-          confirmDialog={confirmErrorDialog}
+          closeDialog={toggleDialog('error')}
+          confirmDialog={confirmDialog('error')}
+        />
+      </Dialog>
+
+      <Dialog
+        visible={dialogs.default}
+        theme='default'
+        title='테스트 다이얼로그'
+        content='dialog content'
+        cancelHandler={toggleDialog('default')}
+      >
+        <DialogChildren
+          theme='primary'
+          closeDialog={toggleDialog('default')}
+          confirmDialog={confirmDialog('default')}
         />
       </Dialog>
 
       <ButtonGroup horizontal>
-        <Button onClick={() => setPrimaryDialog(true)}>다이얼로그 열기</Button>
-        <Button theme='secondary' onClick={() => setSecondaryDialog(true)}>
+        <Button onClick={toggleDialog('primary')}>다이얼로그 열기</Button>
+        <Button theme='secondary' onClick={toggleDialog('secondary')}>
           다이얼로그 열기
         </Button>
 
-        <Button theme='error' onClick={() => setErrorDialog(true)}>
+        <Button theme='error' onClick={toggleDialog('error')}>
+          다이얼로그 열기
+        </Button>
+        <Button theme='link' onClick={toggleDialog('default')}>
           다이얼로그 열기
         </Button>
       </ButtonGroup>

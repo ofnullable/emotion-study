@@ -16,6 +16,7 @@ const Nav = () => {
     <nav>
       <ButtonGroup position='center'>
         <Button>BUTTON</Button>
+        <Button theme='error'>BUTTON</Button>
         <Button theme='link'>BUTTON</Button>
         <Button theme='secondary'>BUTTON</Button>
       </ButtonGroup>

@@ -50,7 +50,7 @@ const dialog = css`
   border-radius: 4px;
   width: 25rem;
   max-width: 90%;
-  background: #fafafa;
+  background: ${colors.gray[0]};
   box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.05);
   padding: 2rem;
 
@@ -64,14 +64,14 @@ const dialog = css`
     font-size: 1.125rem;
     margin: 0;
     padding: 20px 0;
-    color: #282828;
+    color: ${colors.gray[9]};
   }
 `;
 
 const themes = {
   default: css`
     h3 {
-      color: inherit;
+      color: ${colors.gray[9]};
     }
   `,
   primary: css`
