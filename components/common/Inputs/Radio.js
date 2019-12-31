@@ -31,6 +31,7 @@ const radioStyle = css`
       vertical-align: middle;
       background: ${colors.gray[1]};
       border-radius: 50%;
+      margin-right: 4px;
     }
     &::after {
       display: none;
@@ -38,10 +39,10 @@ const radioStyle = css`
   }
   & input[type='radio']:checked + label::after {
     content: '';
-    width: 0.6rem;
-    height: 0.6rem;
-    top: 0.25rem;
-    left: 0.2rem;
+    width: 0.5rem;
+    height: 0.5rem;
+    top: 0.3rem;
+    left: 0.25rem;
     border-radius: 50%;
     position: absolute;
     display: inline-block;
@@ -57,6 +58,11 @@ const themes = {
   secondary: css`
     & input[type='radio']:checked + label::after {
       background: ${colors.secondary[5]};
+    }
+  `,
+  error: css`
+    & input[type='radio']:checked + label::after {
+      background: ${colors.error[4]};
     }
   `,
 };

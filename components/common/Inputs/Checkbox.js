@@ -31,8 +31,9 @@ const checkbox = css`
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.8rem;
     border-radius: 4px;
     margin-right: 4px;
     background: ${colors.gray[0]};
@@ -59,7 +60,7 @@ const themes = {
     }
 
     input:checked + label::before {
-      background: ${colors.gray[1]};
+      background: ${colors.secondary[1]};
     }
   `,
   error: css`

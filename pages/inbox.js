@@ -93,6 +93,14 @@ function inbox() {
           theme='secondary'
           value='radio unchecked'
         />
+        <Radio
+          id='error'
+          label='error radio'
+          checked={radioChecked === 'error'}
+          onChange={handleRadioChange}
+          theme='error'
+          value='radio unchecked'
+        />
       </InputGroup>
       <TextEditor />
     </form>
