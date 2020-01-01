@@ -3,8 +3,6 @@ import { jsx, css } from '@emotion/core';
 import { colors } from '../../../style/colors';
 
 const Avatar = ({ size, src, alt, shape, style, children }) => {
-  console.log(style);
-
   return (
     <div css={[avatarStyle, sizes[size], shapes[shape]]} style={{ ...style }}>
       {src ? <img src={src} alt={alt} /> : children}
