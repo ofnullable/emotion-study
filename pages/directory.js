@@ -1,8 +1,12 @@
 import React, { useState, useCallback } from 'react';
+/** @jsx jsx */
+import { jsx, css } from '@emotion/core';
 import Dialog from '../components/common/Dialog';
 import Button from '../components/common/Button';
 import ButtonGroup from '../components/common/Button/ButtonGroup';
 import { useWindowEvent } from '../util/utils';
+import Avatar from '../components/common/Avatar';
+import AvatarGroup from '../components/common/Avatar/AvatarGroup';
 
 const initial = {
   primary: false,
@@ -70,7 +74,6 @@ function directory() {
           confirmDialog={confirmDialog('primary')}
         />
       </Dialog>
-
       <Dialog
         visible={dialogs.secondary}
         theme='secondary'
@@ -83,7 +86,6 @@ function directory() {
           confirmDialog={confirmDialog('secondary')}
         />
       </Dialog>
-
       <Dialog
         visible={dialogs.error}
         theme='error'
@@ -97,7 +99,6 @@ function directory() {
           confirmDialog={confirmDialog('error')}
         />
       </Dialog>
-
       <Dialog
         visible={dialogs.default}
         theme='default'
@@ -111,7 +112,6 @@ function directory() {
           confirmDialog={confirmDialog('default')}
         />
       </Dialog>
-
       <ButtonGroup horizontal>
         <Button onClick={toggleDialog('primary')}>다이얼로그 열기</Button>
         <Button theme='secondary' onClick={toggleDialog('secondary')}>
@@ -125,8 +125,37 @@ function directory() {
           다이얼로그 열기
         </Button>
       </ButtonGroup>
+      <div css={[avatarWrapper]}>
+        <Avatar size='small' src='http://placeimg.com/64/64/animals?1' />
+        <Avatar size='medium' src='http://placeimg.com/64/64/animals?2' />
+        <Avatar size='large' src='http://placeimg.com/64/64/animals?3' />
+      </div>{' '}
+      <div css={[avatarWrapper]}>
+        <Avatar shape='square' src='http://placeimg.com/64/64/animals?1' />
+        <Avatar shape='rounded' src='http://placeimg.com/64/64/animals?2' />
+        <Avatar shape='circle' src='http://placeimg.com/64/64/animals?3' />
+      </div>
+      <div css={[avatarWrapper]}>
+        <AvatarGroup>
+          <Avatar src='http://placeimg.com/64/64/animals?1'></Avatar>
+          <Avatar src='http://placeimg.com/64/64/animals?2'></Avatar>
+          <Avatar src='http://placeimg.com/64/64/animals?3'></Avatar>
+          <Avatar src='http://placeimg.com/64/64/animals?4'></Avatar>
+          <Avatar>+5</Avatar>
+        </AvatarGroup>
+      </div>
     </>
   );
 }
+
+const avatarWrapper = css`
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+
+  &:last-child {
+    margin-bottom: 1rem;
+  }
+`;
 
 export default directory;
