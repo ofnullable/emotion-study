@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { colors } from '../../../style/colors';
+import { colors } from '../../../styles/colors';
 
 function Dialog({ visible, theme, title, content, children, cancelHandler, ...rest }) {
   if (!visible) return null;

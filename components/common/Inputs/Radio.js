@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { colors } from '../../../style/colors';
+import { colors } from '../../../styles/colors';
 
 function Radio({ id, label, theme, value, checked, onChange }) {
   return (
     <div css={[radioStyle, themes[theme]]}>
-      <input type='radio' id={id} value={value} checked={checked} onChange={onChange} />
+      <input type="radio" id={id} value={value} checked={checked} onChange={onChange} />
       <label htmlFor={id}>{label}</label>
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { colors } from '../../../style/colors';
+import { colors } from '../../../styles/colors';
 
 const AvatarGroup = props => {
   const children = React.Children.toArray(props.children);

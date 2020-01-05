@@ -4,7 +4,7 @@ import { jsx, css } from '@emotion/core';
 import Dialog from '../components/common/Dialog';
 import Button from '../components/common/Button';
 import ButtonGroup from '../components/common/Button/ButtonGroup';
-import { useWindowEvent } from '../util/utils';
+import { useWindowEvent } from '../utils';
 import Avatar from '../components/common/Avatar';
 import AvatarGroup from '../components/common/Avatar/AvatarGroup';
 

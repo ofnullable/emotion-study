@@ -1,11 +1,11 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { colors } from '../../../style/colors';
+import { colors } from '../../../styles/colors';
 
 function Checkbox({ id, theme, label, checked, onChange }) {
   return (
     <div css={[checkbox, themes[theme]]}>
-      <input type='checkbox' id={id} checked={checked} onChange={onChange} />
+      <input type="checkbox" id={id} checked={checked} onChange={onChange} />
       <label htmlFor={id}>{label}</label>
     </div>
   );

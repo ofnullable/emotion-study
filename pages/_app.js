@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { Global } from '@emotion/core';
 
 import Layout from '../components/Layout';
-import { GlobalStyle } from '../style/global';
+import { GlobalStyle } from '../styles/global';
 
 import 'codemirror/lib/codemirror.css';
 import 'tui-editor/dist/tui-editor.min.css';
@@ -22,12 +22,12 @@ class MyApp extends App {
     return (
       <>
         <Head>
-          <meta charSet='utf-8' />
-          <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1' />
-          <meta httpEquiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+          <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
           <link
-            href='https://fonts.googleapis.com/css?family=Fira+Code|Noto+Sans+KR&display=swap&subset=korean'
-            rel='stylesheet'
+            href="https://fonts.googleapis.com/css?family=Fira+Code|Noto+Sans+KR&display=swap&subset=korean"
+            rel="stylesheet"
           />
         </Head>
         <Global styles={GlobalStyle} />

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import { colors } from '../../../style/colors';
+import { colors } from '../../../styles/colors';
 
 const CardHeader = ({ link, title, subTitle }) => {
   if (!title && !subTitle) {
