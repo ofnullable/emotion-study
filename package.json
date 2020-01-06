@@ -1,5 +1,5 @@
 {
-  "name": "cna",
+  "name": "emotion-study",
   "version": "0.1.0",
   "scripts": {
     "dev": "nodemon",
@@ -15,6 +15,7 @@
     "codemirror": "^5.50.0",
     "cookie-parser": "^1.4.4",
     "cross-env": "^6.0.3",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "immer": "^5.1.0",

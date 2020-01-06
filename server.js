@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const next = require('next');
 const express = require('express');
 const cookieParser = require('cookie-parser');
@@ -8,12 +10,10 @@ const port = process.env.PORT || 3010;
 
 const app = next({ dev });
 const handle = app.getRequestHandler();
-// require('dotenv').config();
-
-const COOKIE_SECRET = 'abcdefghijklmnopqrstuvwxyz9876543210'
 
 app.prepare().then(() => {
   const server = express();
+  const COOKIE_SECRET = process.env.COOKIE_SECRET;
 
   server.use('/', express.static('/public'));
   server.use(express.json());
@@ -21,6 +21,7 @@ app.prepare().then(() => {
   server.use(cookieParser(COOKIE_SECRET));
   server.use(
     expressSession({
+      name: process.env.SESSION_NAME,
       resave: false,
       saveUninitialized: false,
       secret: COOKIE_SECRET,
