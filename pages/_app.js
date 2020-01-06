@@ -11,11 +11,14 @@ import 'tui-editor/dist/tui-editor.min.css';
 import 'tui-editor/dist/tui-editor-contents.min.css';
 
 class MyApp extends App {
-  //   static async getInitialProps(appContext) {
-  //     // calls page's `getInitialProps` and fills `appProps.pageProps`
-  //     const appProps = await App.getInitialProps(appContext);
-  //     return { ...appProps };
+  // static async getInitialProps(appContext) {
+  //   const { ctx } = appContext;
+  //   if (ctx.isServer) {
+  //     // TODO: axios header setup
   //   }
+  //   const appProps = await App.getInitialProps(appContext);
+  //   return { ...appProps };
+  // }
 
   render() {
     const { Component, pageProps } = this.props;

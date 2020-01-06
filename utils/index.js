@@ -6,3 +6,5 @@ export const useWindowEvent = (event, handler, deps) => {
     return () => window.removeEventListener(event, handler);
   }, [event, handler, ...deps]);
 };
+
+export const isProd = process.env.NODE_ENV === 'production';
