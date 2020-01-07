@@ -27,9 +27,14 @@ function hacktivity() {
       </Card>
       <Card>
         <CardHeader link="/" title="card title" subTitle="sub title" />
+        <CardContent>Say Hi</CardContent>
       </Card>
       <Card>
         <CardHeader title="card title" subTitle="sub title" />
+        <CardContent />
+        <CardFooter align="right">
+          <Button theme="primary">some button</Button>
+        </CardFooter>
       </Card>
     </div>
   );

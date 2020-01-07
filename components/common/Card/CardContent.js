@@ -7,6 +7,7 @@ const CardContent = ({ children }) => {
 
 const cardContentStyle = css`
   padding: 16px 0;
+  flex: 1 0 auto;
 `;
 
 export default CardContent;

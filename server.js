@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const expressSession = require('express-session');
 
 const dev = process.env.NODE_ENV !== 'production';
-const port = process.env.PORT || 3010;
+const port = process.env.PORT || 3030;
 
 const app = next({ dev });
 const handle = app.getRequestHandler();
