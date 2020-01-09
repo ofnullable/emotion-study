@@ -9,7 +9,7 @@ function Select({ id, theme, value, options, onChange }) {
     <div css={[selectStyle, themes[theme]]}>
       <select id={id} onChange={onChange} value={value}>
         {options.map(option => (
-          <option key={option} value={option} css={[optionsStyle]}>
+          <option key={option} value={option}>
             {option}
           </option>
         ))}
@@ -17,6 +17,10 @@ function Select({ id, theme, value, options, onChange }) {
     </div>
   );
 }
+
+Select.defaultProps = {
+  theme: 'default',
+};
 
 const selectStyle = css`
   position: relative;
@@ -29,12 +33,6 @@ const selectStyle = css`
     border: none;
     padding: 8px 12px;
     border-radius: 4px;
-  }
-
-  & > select:active,
-  & > select:focus {
-    outline: none;
-    box-shadow: none;
   }
 
   & > ul {
@@ -50,12 +48,13 @@ const selectStyle = css`
   }
 `;
 
-const optionsStyle = css`
-  padding: 8px 12px;
-  border-radius: 4px;
-`;
-
 const themes = {
+  default: css`
+    border-color: ${colors.gray[6]};
+    & select {
+      color: ${colors.gray[7]};
+    }
+  `,
   primary: css`
     border-color: ${colors.primary[5]};
     & select {

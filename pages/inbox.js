@@ -16,6 +16,7 @@ function inbox() {
   const [checked3, setChecked3] = useState(true);
   const [radioChecked, setRadioChecked] = useState('primary');
   const [select, setSelect] = useState({
+    default: '',
     primarySelect: 'one',
     secondarySelect: 'two',
     errorSelect: 'three',
@@ -118,6 +119,13 @@ function inbox() {
         />
       </InputGroup>
       <InputGroup>
+        <Select
+          id="defaultSelect"
+          value={select.defaultSelect}
+          onChange={handleSelectChange}
+          // theme="default"
+          options={options}
+        />
         <Select
           id="primarySelect"
           value={select.primarySelect}

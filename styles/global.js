@@ -154,4 +154,7 @@ export const GlobalStyle = css`
   [hidden] {
     display: none;
   }
+  select:focus {
+    outline: none;
+  }
 `;
