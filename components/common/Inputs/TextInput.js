@@ -28,7 +28,7 @@ const inputStyle = (width, fullWidth) => css`
 
   & > input {
     width: 100%;
-    padding: 4px 10px;
+    padding: 8px 12px;
     border-radius: 4px;
     &:focus {
       outline: none;
