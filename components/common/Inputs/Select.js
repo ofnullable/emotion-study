@@ -4,22 +4,25 @@ import { jsx, css } from '@emotion/core';
 
 import { colors } from '../../../styles/colors';
 
-function Select({ id, theme, value, options, onChange }) {
+function Select({ id, theme, value, options, native, onChange }) {
   return (
     <div css={[selectStyle, themes[theme]]}>
-      <select id={id} onChange={onChange} value={value}>
-        {options.map(option => (
-          <option key={option} value={option}>
-            {option}
-          </option>
-        ))}
-      </select>
+      {native ? (
+        <select id={id} onChange={onChange} value={value}>
+          {options.map(option => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      ) : null}
     </div>
   );
 }
 
 Select.defaultProps = {
   theme: 'default',
+  native: true,
 };
 
 const selectStyle = css`
