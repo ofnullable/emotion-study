@@ -16,10 +16,16 @@ function inbox() {
   const [checked3, setChecked3] = useState(true);
   const [radioChecked, setRadioChecked] = useState('primary');
   const [select, setSelect] = useState({
-    default: '',
+    defaultSelect: 'one',
     primarySelect: 'one',
     secondarySelect: 'two',
     errorSelect: 'three',
+  });
+  const [nativeSelect, setNativeSelect] = useState({
+    defaultNative: 'one',
+    primaryNative: 'one',
+    secondaryNative: 'two',
+    errorNative: 'three',
   });
 
   const handleChange = useCallback(
@@ -36,6 +42,12 @@ function inbox() {
   const handleSelectChange = useCallback(({ target }) => {
     setSelect({
       ...select,
+      [target.id]: target.value,
+    });
+  });
+  const handleNativeSelectChange = useCallback(({ target }) => {
+    setNativeSelect({
+      ...nativeSelect,
       [target.id]: target.value,
     });
   });
@@ -144,6 +156,40 @@ function inbox() {
           id="errorSelect"
           value={select.errorSelect}
           onChange={handleSelectChange}
+          theme="error"
+          options={options}
+        />
+      </InputGroup>
+      <InputGroup>
+        <Select
+          native
+          id="defaultNative"
+          value={nativeSelect.defaultNative}
+          onChange={handleNativeSelectChange}
+          // theme="default"
+          options={options}
+        />
+        <Select
+          native
+          id="primaryNative"
+          value={nativeSelect.primaryNative}
+          onChange={handleNativeSelectChange}
+          theme="primary"
+          options={options}
+        />
+        <Select
+          native
+          id="secondaryNative"
+          value={nativeSelect.secondaryNative}
+          onChange={handleNativeSelectChange}
+          theme="secondary"
+          options={options}
+        />
+        <Select
+          native
+          id="errorNative"
+          value={nativeSelect.errorNative}
+          onChange={handleNativeSelectChange}
           theme="error"
           options={options}
         />

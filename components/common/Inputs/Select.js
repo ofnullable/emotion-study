@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 
@@ -8,21 +8,45 @@ function Select({ id, theme, value, options, native, onChange }) {
   return (
     <div css={[selectStyle, themes[theme]]}>
       {native ? (
-        <select id={id} onChange={onChange} value={value}>
-          {options.map(option => (
-            <option key={option} value={option}>
-              {option}
-            </option>
-          ))}
-        </select>
-      ) : null}
+        <NativeSelect id={id} onChange={onChange} value={value} options={options} />
+      ) : (
+        <DivSelect id={id} onChange={onChange} value={value} options={options} />
+      )}
     </div>
+  );
+}
+
+function DivSelect({ id, onChange, value, options }) {
+  const [optionsVisible, setOptionsVisible] = useState(false);
+  return (
+    <>
+      <div css={[divSelectStyle]}>{value}</div>
+      {optionsVisible && (
+        <ul>
+          {options.map(option => (
+            <li key={option}>{option}</li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
+}
+
+function NativeSelect({ id, onChange, value, options }) {
+  return (
+    <select id={id} onChange={onChange} value={value} css={[nativeSelectStyle]}>
+      {options.map(option => (
+        <option key={option} value={option}>
+          {option}
+        </option>
+      ))}
+    </select>
   );
 }
 
 Select.defaultProps = {
   theme: 'default',
-  native: true,
+  native: false,
 };
 
 const selectStyle = css`
@@ -31,24 +55,6 @@ const selectStyle = css`
   vertical-align: middle;
   border-radius: 4px;
   border: 2px solid;
-
-  & > select {
-    border: none;
-    padding: 8px 12px;
-    border-radius: 4px;
-  }
-
-  & > ul {
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    z-index: 10;
-    min-width: 100%;
-    list-style: none;
-    position: absolute;
-    border-radius: 4px;
-  }
 `;
 
 const themes = {
@@ -77,5 +83,32 @@ const themes = {
     }
   `,
 };
+
+const nativeSelectStyle = css`
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+`;
+
+const divSelectStyle = css`
+  position: relative;
+  border-radius: 4px;
+  min-width: 100px;
+  padding: 8px 24px 8px 12px;
+
+  &::after {
+    width: 0;
+    height: 0;
+    top: calc(50% - 2px);
+    right: 10%;
+    border: solid transparent;
+    content: ' ';
+    position: absolute;
+    pointer-events: none;
+    border-top-color: #000000;
+    border-width: 4px;
+    margin-left: -4px;
+  }
+`;
 
 export default Select;
