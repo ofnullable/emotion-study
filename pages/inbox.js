@@ -39,18 +39,28 @@ function inbox() {
     setRadioChecked(target.id);
   });
 
-  const handleSelectChange = useCallback(({ target }) => {
-    setSelect({
-      ...select,
-      [target.id]: target.value,
-    });
-  });
-  const handleNativeSelectChange = useCallback(({ target }) => {
-    setNativeSelect({
-      ...nativeSelect,
-      [target.id]: target.value,
-    });
-  });
+  const handleSelectChange = useCallback(
+    ({ target }) => {
+      const id = target.id || target.dataset.id;
+      const value = target.value || target.innerText;
+
+      setSelect({
+        ...select,
+        [id]: value,
+      });
+    },
+    [select]
+  );
+
+  const handleNativeSelectChange = useCallback(
+    ({ target }) => {
+      setNativeSelect({
+        ...nativeSelect,
+        [target.id]: target.value,
+      });
+    },
+    [nativeSelect]
+  );
 
   return (
     <form>
