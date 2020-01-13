@@ -19,17 +19,11 @@ function Select({ id, theme, value, options, native, onChange }) {
 
 function DivSelect({ id, onChange, value, options }) {
   const [optionsVisible, setOptionsVisible] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const setDisplayNode = useRef();
 
   const toggleVisible = () => {
     setOptionsVisible(prev => !prev);
-  };
-
-  const handleClick = e => {
-    e.preventDefault();
-    // if (setDisplayNode.current) {
-    // setOptionsVisible(false);
-    // }
   };
 
   const handleChange = e => {
@@ -38,7 +32,32 @@ function DivSelect({ id, onChange, value, options }) {
   };
 
   const handleKeyDown = e => {
-    console.log(e);
+    const validKeys = ['ArrowUp', 'ArrowDown', 'Enter', 'Escape'];
+
+    if (validKeys.includes(e.key)) {
+      switch (e.key) {
+        case 'ArrowUp':
+          if (currentIndex > 0) {
+            setCurrentIndex(prev => prev - 1);
+          }
+          return;
+        case 'ArrowDown':
+          if (currentIndex < options.length - 1) {
+            setCurrentIndex(prev => prev + 1);
+          }
+          return;
+        case 'Enter':
+          setDisplayNode.current.blur();
+          return;
+        case 'Escape':
+          setDisplayNode.current.blur();
+          return;
+      }
+    }
+  };
+
+  const handleHover = i => () => {
+    setCurrentIndex(i);
   };
 
   return (
@@ -48,13 +67,19 @@ function DivSelect({ id, onChange, value, options }) {
         tabIndex={0}
         onBlur={toggleVisible}
         onFocus={toggleVisible}
-        onClick={handleClick}
+        onKeyDown={handleKeyDown}
         ref={setDisplayNode}
       >
         {value}
-        <ul css={[optionsStyle(optionsVisible)]} onKeyDown={handleKeyDown}>
-          {options.map(option => (
-            <li data-id={id} key={option} onClick={handleChange}>
+        <ul css={[optionsStyle(optionsVisible)]}>
+          {options.map((option, i) => (
+            <li
+              data-id={id}
+              key={option}
+              onClick={handleChange}
+              onMouseOver={handleHover(i)}
+              css={[i === currentIndex ? activeOptionStyle : '']}
+            >
               {option}
             </li>
           ))}
@@ -190,11 +215,11 @@ const optionsStyle = visible => css`
   & li {
     padding: 12px;
     cursor: pointer;
-
-    &:hover {
-      background: ${colors.gray[2]};
-    }
   }
+`;
+
+const activeOptionStyle = css`
+  background: ${colors.gray[2]};
 `;
 
 export default Select;
