@@ -31,6 +31,10 @@ function DivSelect({ id, onChange, value, options }) {
     onChange(e);
   };
 
+  const getTarget = e => {
+    return e.target.firstElementChild.childNodes[currentIndex];
+  };
+
   const handleKeyDown = e => {
     const validKeys = ['ArrowUp', 'ArrowDown', 'Enter', 'Escape'];
 
@@ -47,6 +51,8 @@ function DivSelect({ id, onChange, value, options }) {
           }
           return;
         case 'Enter':
+          e.target = getTarget(e);
+          onChange(e);
           setDisplayNode.current.blur();
           return;
         case 'Escape':
