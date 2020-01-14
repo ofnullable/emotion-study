@@ -64,22 +64,26 @@ function inbox() {
 
   return (
     <form>
-      <TextInput
-        id="primaryinput"
-        theme="primary"
-        label="primary input"
-        value={input}
-        fullWidth
-        onChange={handleChange}
-      />
-      <TextInput
-        id="errorinput"
-        theme="error"
-        label="error input"
-        value={input}
-        fullWidth
-        onChange={handleChange}
-      />
+      <InputGroup>
+        <TextInput
+          id="primaryinput"
+          theme="primary"
+          label="primary input"
+          value={input}
+          fullWidth
+          onChange={handleChange}
+        />
+      </InputGroup>
+      <InputGroup>
+        <TextInput
+          id="errorinput"
+          theme="error"
+          label="error input"
+          value={input}
+          fullWidth
+          onChange={handleChange}
+        />
+      </InputGroup>
       <InputGroup>
         <TextInput id="1" label="default input" value={input} width="50%" onChange={handleChange} />
         <TextInput
