@@ -1,5 +1,7 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import { IconContext } from 'react-icons/lib';
+
 import AppBar from '../common/AppBar/AppBar';
 import Footer from './Footer';
 
@@ -25,9 +27,11 @@ const menus = {
 function index({ children }) {
   return (
     <>
-      <AppBar menus={menus} />
-      <main css={mainStyle}>{children}</main>
-      <Footer />
+      <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
+        <AppBar menus={menus} />
+        <main css={mainStyle}>{children}</main>
+        <Footer />
+      </IconContext.Provider>
     </>
   );
 }
