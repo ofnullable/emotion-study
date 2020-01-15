@@ -2,9 +2,9 @@
 import { jsx, css } from '@emotion/core';
 import { colors } from '../../../styles/colors';
 
-function Button({ theme, disabled, children, ...rest }) {
+function Button({ theme, disabled, iconOnly, children, ...rest }) {
   return (
-    <button css={[button, themes[theme]]} disabled={disabled} {...rest}>
+    <button css={[button, themes[theme], iconOnlyStyle(iconOnly)]} disabled={disabled} {...rest}>
       {children}
     </button>
   );
@@ -74,5 +74,21 @@ const themes = {
     }
   `,
 };
+
+const iconOnlyStyle = iconOnly =>
+  iconOnly
+    ? css`
+        padding: 0;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        svg {
+          margin: 0;
+        }
+      `
+    : css``;
 
 export default Button;

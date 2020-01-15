@@ -16,6 +16,7 @@ const margin = (horizontal, gutter) => {
   const margin = horizontal ? `margin-left: ${gutter}` : `margin-top: ${gutter}`;
   return css`
     display: flex;
+    margin-bottom: 1rem;
     ${flexDirection};
     button + button {
       ${margin};
