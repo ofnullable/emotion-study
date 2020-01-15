@@ -25,6 +25,7 @@
     "next-redux-wrapper": "^4.0.1",
     "react": "16.12.0",
     "react-dom": "16.12.0",
+    "react-icons": "^3.8.0",
     "react-redux": "^7.1.3",
     "redux": "^4.0.4",
     "redux-saga": "^1.1.3",
@@ -35,6 +36,7 @@
     "@zeit/next-css": "^1.0.1",
     "babel-plugin-emotion": "^10.0.23",
     "compression-webpack-plugin": "^3.0.1",
+    "mini-css-extract-plugin": "^0.9.0",
     "nodemon": "^2.0.2",
     "webpack": "^4.41.4"
   }
