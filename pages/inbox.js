@@ -6,6 +6,7 @@ import Checkbox from '../components/common/Inputs/Checkbox';
 import TextInput from '../components/common/Inputs/TextInput';
 import InputGroup from '../components/common/Inputs/InputGroup';
 import Select from '../components/common/Inputs/Select';
+import StarRating from '../components/common/StarRating';
 
 const options = ['one', 'two', 'three'];
 
@@ -208,6 +209,7 @@ function inbox() {
           options={options}
         />
       </InputGroup>
+      <StarRating rating={5} />
       <TextEditor />
     </form>
   );
