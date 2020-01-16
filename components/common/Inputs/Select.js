@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import { FaAngleDown } from 'react-icons/fa';
 
 import media from '../../../styles/media';
 import { colors } from '../../../styles/colors';
@@ -90,6 +91,7 @@ function DivSelect({ id, onChange, value, options }) {
             </li>
           ))}
         </ul>
+        <FaAngleDown />
       </div>
 
       <NativeSelect id={id} onChange={onChange} value={value} options={options} />
@@ -99,13 +101,16 @@ function DivSelect({ id, onChange, value, options }) {
 
 function NativeSelect({ id, onChange, value, options }) {
   return (
-    <select id={id} onChange={onChange} value={value} css={[nativeSelectStyle]}>
-      {options.map(option => (
-        <option key={option} value={option}>
-          {option}
-        </option>
-      ))}
-    </select>
+    <>
+      <select id={id} onChange={onChange} value={value} css={[nativeSelectStyle]}>
+        {options.map(option => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+      <FaAngleDown />
+    </>
   );
 }
 
@@ -134,30 +139,16 @@ const themes = {
 };
 
 const selectStyle = css`
+  width: auto;
+  min-width: 90px;
+  border: 2px solid;
+  border-radius: 4px;
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  border-radius: 4px;
-  border: 2px solid;
+  & div,
   & select {
-    color: inherit;
-  }
-  & div {
-    color: inherit;
-
-    &::after {
-      width: 0;
-      height: 0;
-      top: calc(50% - 2px);
-      right: 10%;
-      border: solid transparent;
-      content: ' ';
-      position: absolute;
-      pointer-events: none;
-      border-top-color: inherit;
-      border-width: 4px;
-      margin-left: -4px;
-    }
+    padding: 8px 24px 8px 12px;
   }
 `;
 
@@ -171,6 +162,9 @@ const conditionalStyle = native =>
           }
           & > select {
             display: none;
+            & + svg {
+              display: none;
+            }
           }
         }
 
@@ -180,27 +174,47 @@ const conditionalStyle = native =>
           }
           & > select {
             display: inline-block;
+
+            & + svg {
+              display: inline-block;
+            }
           }
         }
       `;
 
 const nativeSelectStyle = css`
+  z-index: 1;
+  color: inherit;
+  appearance: none;
   border: none;
-  padding: 8px 12px;
   border-radius: 4px;
+  position: relative;
+  font-family: inherit;
+  background: transparent;
+  & + svg {
+    z-index: 0;
+    top: calc(50% - 8px);
+    right: 8%;
+    position: absolute;
+  }
 `;
 
 const divSelectStyle = css`
-  min-width: 100px;
+  width: 100%;
+  color: inherit;
   position: relative;
   border-radius: 4px;
-  padding: 8px 24px 8px 12px;
-
   &:focus {
     outline: none;
   }
   & > ul {
     transition: opacity 0.1s ease, z-index 0.2s ease;
+  }
+  & > svg {
+    z-index: 0;
+    top: calc(50% - 8px);
+    right: 8%;
+    position: absolute;
   }
 `;
 
