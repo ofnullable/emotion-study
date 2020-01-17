@@ -28,6 +28,8 @@ function inbox() {
     secondaryNative: 'two',
     errorNative: 'three',
   });
+  const [star, setStar] = useState(0);
+  const [readOnlyStar, setReadOnlyStar] = useState(5);
 
   const handleChange = useCallback(
     ({ target }) => {
@@ -181,7 +183,6 @@ function inbox() {
           id="defaultNative"
           value={nativeSelect.defaultNative}
           onChange={handleNativeSelectChange}
-          // theme="default"
           options={options}
         />
         <Select
@@ -209,7 +210,8 @@ function inbox() {
           options={options}
         />
       </InputGroup>
-      <StarRating rating={5} />
+      <StarRating star={star} setStar={setStar} />
+      <StarRating star={readOnlyStar} setStar={setReadOnlyStar} readOnly />
       <TextEditor />
     </form>
   );
