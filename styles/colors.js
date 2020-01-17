@@ -64,4 +64,16 @@ export const colors = {
     '#ab2617',
     '#942114',
   ],
+  warn: [
+    '#fff8e1',
+    '#ffecb3',
+    '#ffe082',
+    '#ffd54f',
+    '#ffca28',
+    '#ffc107',
+    '#ffb300',
+    '#ffa000',
+    '#ff8f00',
+    '#ff6f00',
+  ],
 };
