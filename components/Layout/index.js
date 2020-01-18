@@ -8,19 +8,19 @@ import Footer from './Footer';
 const menus = {
   brand: {
     href: '/',
-    name: 'BRANDNAME',
+    name: 'HOME',
   },
   hacktivity: {
     href: '/hacktivity',
     name: 'hacktivity',
   },
   directory: {
-    href: '/directory',
-    name: 'directory',
+    href: '/components',
+    name: 'components',
   },
   inbox: {
-    href: '/inbox',
-    name: 'inbox',
+    href: '/forms',
+    name: 'forms',
   },
 };
 

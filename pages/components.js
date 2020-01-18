@@ -1,12 +1,18 @@
 import React, { useState, useCallback } from 'react';
+import Link from 'next/link';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
-import Dialog from '../components/common/Dialog';
-import Button from '../components/common/Button';
-import ButtonGroup from '../components/common/Button/ButtonGroup';
-import { useWindowEvent } from '../utils';
+
 import Avatar from '../components/common/Avatar';
 import AvatarGroup from '../components/common/Avatar/AvatarGroup';
+import Button from '../components/common/Button';
+import ButtonGroup from '../components/common/Button/ButtonGroup';
+import Card from '../components/common/Card';
+import CardHeader from '../components/common/Card/CardHeader';
+import CardContent from '../components/common/Card/CardContent';
+import CardFooter from '../components/common/Card/CardFooter';
+import Dialog from '../components/common/Dialog';
+import { useWindowEvent } from '../utils';
 
 const initial = {
   primary: false,
@@ -17,14 +23,16 @@ const initial = {
 
 function DialogChildren({ theme, closeDialog, confirmDialog }) {
   return (
-    <ButtonGroup horizontal position="right">
-      <Button theme="secondary" onClick={closeDialog}>
-        취소
-      </Button>
-      <Button theme={theme} onClick={confirmDialog}>
-        확인
-      </Button>
-    </ButtonGroup>
+    <>
+      <ButtonGroup horizontal position="right">
+        <Button theme="secondary" onClick={closeDialog}>
+          취소
+        </Button>
+        <Button theme={theme} onClick={confirmDialog}>
+          확인
+        </Button>
+      </ButtonGroup>
+    </>
   );
 }
 
@@ -112,6 +120,35 @@ function directory() {
           confirmDialog={confirmDialog('default')}
         />
       </Dialog>
+
+      <div css={[cardWrapper]}>
+        <Card>
+          <CardHeader title="card title" subTitle="sub title" />
+          <CardContent>
+            <img />
+            hello world!
+          </CardContent>
+          <CardFooter align="right">
+            <Link href="/inbox">
+              <a>
+                <Button theme="link">show details</Button>
+              </a>
+            </Link>
+          </CardFooter>
+        </Card>
+        <Card>
+          <CardHeader link="/" title="card title" subTitle="sub title" />
+          <CardContent>Say Hi</CardContent>
+        </Card>
+        <Card>
+          <CardHeader title="card title" subTitle="sub title" />
+          <CardContent />
+          <CardFooter align="right">
+            <Button theme="primary">some button</Button>
+          </CardFooter>
+        </Card>
+      </div>
+
       <ButtonGroup horizontal>
         <Button onClick={toggleDialog('primary')}>다이얼로그 열기</Button>
         <Button theme="secondary" onClick={toggleDialog('secondary')}>
@@ -156,6 +193,12 @@ function directory() {
     </>
   );
 }
+
+const cardWrapper = css`
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+`;
 
 const avatarWrapper = css`
   display: flex;
