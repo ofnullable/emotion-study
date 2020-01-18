@@ -2,6 +2,9 @@ import React, { useState, useCallback } from 'react';
 import Link from 'next/link';
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import { MdEdit } from 'react-icons/md';
+import { FaDocker } from 'react-icons/fa';
+import { AiOutlineUpCircle } from 'react-icons/ai';
 
 import Avatar from '../components/common/Avatar';
 import AvatarGroup from '../components/common/Avatar/AvatarGroup';
@@ -149,46 +152,105 @@ function directory() {
         </Card>
       </div>
 
+      <ButtonGroup>
+        <Button iconOnly>
+          <MdEdit />
+        </Button>
+        <Button theme="error" iconOnly>
+          <MdEdit />
+        </Button>
+        <Button theme="link" iconOnly>
+          <MdEdit />
+        </Button>
+        <Button theme="secondary" iconOnly>
+          <MdEdit />
+        </Button>
+      </ButtonGroup>
+      <ButtonGroup>
+        <Button>BUTTON</Button>
+        <Button theme="error">BUTTON</Button>
+        <Button theme="link">BUTTON</Button>
+        <Button theme="secondary">BUTTON</Button>
+      </ButtonGroup>
+      <ButtonGroup>
+        <Button>
+          <FaDocker style={{ marginRight: '4px' }} />
+          BUTTON
+        </Button>
+        <Button theme="error">
+          <FaDocker style={{ marginRight: '4px' }} />
+          BUTTON
+        </Button>
+        <Button theme="link">
+          <FaDocker style={{ marginRight: '4px' }} />
+          BUTTON
+        </Button>
+        <Button theme="secondary">
+          <FaDocker style={{ marginRight: '4px' }} />
+          BUTTON
+        </Button>
+      </ButtonGroup>
+      <ButtonGroup>
+        <Button>
+          BUTTON
+          <AiOutlineUpCircle style={{ marginLeft: '4px' }} />
+        </Button>
+        <Button theme="error">
+          BUTTON
+          <AiOutlineUpCircle style={{ marginLeft: '4px' }} />
+        </Button>
+        <Button theme="link">
+          BUTTON
+          <AiOutlineUpCircle style={{ marginLeft: '4px' }} />
+        </Button>
+        <Button theme="secondary">
+          BUTTON
+          <AiOutlineUpCircle style={{ marginLeft: '4px' }} />
+        </Button>
+      </ButtonGroup>
+
       <ButtonGroup horizontal>
         <Button onClick={toggleDialog('primary')}>다이얼로그 열기</Button>
-        <Button theme="secondary" onClick={toggleDialog('secondary')}>
-          다이얼로그 열기
-        </Button>
-
         <Button theme="error" onClick={toggleDialog('error')}>
           다이얼로그 열기
         </Button>
         <Button theme="link" onClick={toggleDialog('default')}>
           다이얼로그 열기
         </Button>
+        <Button theme="secondary" onClick={toggleDialog('secondary')}>
+          다이얼로그 열기
+        </Button>
       </ButtonGroup>
-      <div css={[avatarWrapper]}>
-        <Avatar size="small" src="http://placeimg.com/64/64/animals?1" />
-        <Avatar size="medium" src="http://placeimg.com/64/64/animals?2" />
-        <Avatar size="large" src="http://placeimg.com/64/64/animals?3" />
-      </div>
-      <div css={[avatarWrapper]}>
-        <strong>small medium large</strong>
-      </div>
-      <div css={[avatarWrapper]}>
-        <Avatar shape="square" src="http://placeimg.com/64/64/animals?1" />
-        <Avatar shape="rounded" src="http://placeimg.com/64/64/animals?2" />
-        <Avatar shape="circle" src="http://placeimg.com/64/64/animals?3" />
-      </div>
-      <div css={[avatarWrapper]}>
-        <strong>square rounded circle</strong>
-      </div>
-      <div css={[avatarWrapper]}>
-        <AvatarGroup>
-          <Avatar src="http://placeimg.com/64/64/animals?1"></Avatar>
-          <Avatar src="http://placeimg.com/64/64/animals?2"></Avatar>
-          <Avatar src="http://placeimg.com/64/64/animals?3"></Avatar>
-          <Avatar src="http://placeimg.com/64/64/animals?4"></Avatar>
-          <Avatar>+5</Avatar>
-        </AvatarGroup>
-      </div>
-      <div css={[avatarWrapper]}>
-        <strong>grouped</strong>
+
+      <div css={[{ display: 'flex', justifyContent: 'space-evenly', marginBottom: '1rem' }]}>
+        <div css={[avatarWrapper]}>
+          <div style={{ display: 'inherit' }}>
+            <Avatar size="small" src="http://placeimg.com/64/64/animals?1" />
+            <Avatar size="medium" src="http://placeimg.com/64/64/animals?2" />
+            <Avatar size="large" src="http://placeimg.com/64/64/animals?3" />
+          </div>
+          <strong>small medium large</strong>
+        </div>
+        <div css={[avatarWrapper]}>
+          <div style={{ display: 'inherit' }}>
+            <Avatar shape="square" src="http://placeimg.com/64/64/animals?1" />
+            <Avatar shape="rounded" src="http://placeimg.com/64/64/animals?2" />
+            <Avatar shape="circle" src="http://placeimg.com/64/64/animals?3" />
+          </div>
+          <strong>square rounded circle</strong>
+        </div>
+        <div css={[avatarWrapper]}>
+          <div style={{ display: 'inherit' }}>
+            <AvatarGroup>
+              <Avatar src="http://placeimg.com/64/64/animals?1"></Avatar>
+              <Avatar src="http://placeimg.com/64/64/animals?2"></Avatar>
+              <Avatar src="http://placeimg.com/64/64/animals?3"></Avatar>
+              <Avatar src="http://placeimg.com/64/64/animals?4"></Avatar>
+              <Avatar>+5</Avatar>
+            </AvatarGroup>
+          </div>
+          <strong>grouped</strong>
+        </div>
       </div>
     </>
   );
@@ -202,12 +264,9 @@ const cardWrapper = css`
 
 const avatarWrapper = css`
   display: flex;
-  margin-top: 1rem;
+  flex-direction: column;
   justify-content: center;
-
-  &:last-child {
-    margin-bottom: 1rem;
-  }
+  align-items: center;
 `;
 
 export default directory;

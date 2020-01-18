@@ -2,7 +2,7 @@
 import { jsx, css } from '@emotion/core';
 
 function ButtonGroup({ horizontal, position, gutter, children }) {
-  return <div css={[margin(horizontal, gutter), align(position)]}>{children}</div>;
+  return <div css={[defaultStyle, margin(horizontal, gutter), align(position)]}>{children}</div>;
 }
 
 ButtonGroup.defaultProps = {
@@ -11,11 +11,14 @@ ButtonGroup.defaultProps = {
   gutter: '16px',
 };
 
+const defaultStyle = css`
+  display: flex;
+`;
+
 const margin = (horizontal, gutter) => {
   const flexDirection = horizontal ? `flex-direction: row` : `flex-direction: column`;
   const margin = horizontal ? `margin-left: ${gutter}` : `margin-top: ${gutter}`;
   return css`
-    display: flex;
     margin-bottom: 1rem;
     ${flexDirection};
     button + button {
@@ -25,21 +28,18 @@ const margin = (horizontal, gutter) => {
 };
 
 const align = position => {
+  console.log(position);
   switch (position) {
     case 'center':
       return css`
-        display: flex;
         justify-content: center;
       `;
     case 'right':
       return css`
-        display: flex;
         justify-content: flex-end;
       `;
     default:
-      return css`
-        display: flex;
-      `;
+      return css``;
   }
 };
 

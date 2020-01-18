@@ -1,11 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { FaDocker } from 'react-icons/fa';
-import { AiOutlineUpCircle } from 'react-icons/ai';
-import { MdEdit } from 'react-icons/md';
-
-import Button from './common/Button';
-import ButtonGroup from './common/Button/ButtonGroup';
 
 const links = [
   { href: 'https://zeit.co/now', label: 'ZEIT' },
@@ -18,65 +12,9 @@ const links = [
 const Nav = () => {
   return (
     <nav>
-      <ButtonGroup position='center'>
-        <Button>BUTTON</Button>
-        <Button theme='error'>BUTTON</Button>
-        <Button theme='link'>BUTTON</Button>
-        <Button theme='secondary'>BUTTON</Button>
-      </ButtonGroup>
-      <ButtonGroup position='center'>
-        <Button>
-          <FaDocker style={{ marginRight: '4px' }} />
-          BUTTON
-        </Button>
-        <Button theme='error'>
-          <FaDocker style={{ marginRight: '4px' }} />
-          BUTTON
-        </Button>
-        <Button theme='link'>
-          <FaDocker style={{ marginRight: '4px' }} />
-          BUTTON
-        </Button>
-        <Button theme='secondary'>
-          <FaDocker style={{ marginRight: '4px' }} />
-          BUTTON
-        </Button>
-      </ButtonGroup>
-      <ButtonGroup position='center'>
-        <Button>
-          BUTTON
-          <AiOutlineUpCircle style={{ marginLeft: '4px' }} />
-        </Button>
-        <Button theme='error'>
-          BUTTON
-          <AiOutlineUpCircle style={{ marginLeft: '4px' }} />
-        </Button>
-        <Button theme='link'>
-          BUTTON
-          <AiOutlineUpCircle style={{ marginLeft: '4px' }} />
-        </Button>
-        <Button theme='secondary'>
-          BUTTON
-          <AiOutlineUpCircle style={{ marginLeft: '4px' }} />
-        </Button>
-      </ButtonGroup>
-      <ButtonGroup position='center'>
-        <Button iconOnly>
-          <MdEdit />
-        </Button>
-        <Button theme='error' iconOnly>
-          <MdEdit />
-        </Button>
-        <Button theme='link' iconOnly>
-          <MdEdit />
-        </Button>
-        <Button theme='secondary' iconOnly>
-          <MdEdit />
-        </Button>
-      </ButtonGroup>
       <ul>
         <li>
-          <Link href='/' as='/'>
+          <Link href="/" as="/">
             <a>Home</a>
           </Link>
         </li>
