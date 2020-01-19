@@ -10,10 +10,6 @@ const menus = {
     href: '/',
     name: 'HOME',
   },
-  hacktivity: {
-    href: '/hacktivity',
-    name: 'hacktivity',
-  },
   directory: {
     href: '/components',
     name: 'components',
