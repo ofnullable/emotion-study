@@ -1,20 +1,22 @@
 import React, { useState, useCallback } from 'react';
 
-import Radio from '../components/common/Inputs/Radio';
+import StarRating from '../components/common/StarRating';
 import TextEditor from '../components/common/TextEditor';
+import Radio from '../components/common/Inputs/Radio';
+import Select from '../components/common/Inputs/Select';
 import Checkbox from '../components/common/Inputs/Checkbox';
 import TextInput from '../components/common/Inputs/TextInput';
 import InputGroup from '../components/common/Inputs/InputGroup';
-import Select from '../components/common/Inputs/Select';
-import StarRating from '../components/common/StarRating';
 
 const options = ['one', 'two', 'three'];
 
 function inbox() {
   const [input, setInput] = useState('');
-  const [checked1, setChecked1] = useState(true);
-  const [checked2, setChecked2] = useState(true);
-  const [checked3, setChecked3] = useState(true);
+  const [checkbox, setCheckbox] = useState({
+    primaryCheckbox: true,
+    secondaryCheckbox: true,
+    errorCheckbox: true,
+  });
   const [radioChecked, setRadioChecked] = useState('primary');
   const [select, setSelect] = useState({
     defaultSelect: 'one',
@@ -37,6 +39,14 @@ function inbox() {
     },
     [input]
   );
+
+  const handleCheckboxChange = useCallback(({ target }) => {
+    const { id } = target;
+    setCheckbox(prev => ({
+      ...checkbox,
+      [id]: !prev[id],
+    }));
+  });
 
   const handleRadioChange = useCallback(({ target }) => {
     setRadioChecked(target.id);
@@ -100,24 +110,24 @@ function inbox() {
       </InputGroup>
       <InputGroup>
         <Checkbox
-          id="3"
+          id="primaryCheckbox"
           label="primary checkbox"
-          checked={checked1}
-          onChange={() => setChecked1(prev => !prev)}
+          checked={checkbox.primaryCheckbox}
+          onChange={handleCheckboxChange}
           theme="primary"
         />
         <Checkbox
-          id="4"
+          id="secondaryCheckbox"
           label="secondary checkbox"
-          checked={checked2}
-          onChange={() => setChecked2(prev => !prev)}
+          checked={checkbox.secondaryCheckbox}
+          onChange={handleCheckboxChange}
           theme="secondary"
         />
         <Checkbox
-          id="5"
+          id="errorCheckbox"
           label="error checkbox"
-          checked={checked3}
-          onChange={() => setChecked3(prev => !prev)}
+          checked={checkbox.errorCheckbox}
+          onChange={handleCheckboxChange}
           theme="error"
         />
       </InputGroup>

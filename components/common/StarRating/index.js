@@ -36,9 +36,9 @@ function StarRating({ star = 0, setStar, readOnly }) {
 
   return (
     <div
-      css={[starStyle]}
-      onMouseOver={handleHover}
+      css={[starStyle, cursor(readOnly)]}
       onClick={handleClick}
+      onMouseOver={handleHover}
       onMouseOut={() => handleHover({})}
     >
       {Array.from(Array(5)).map((v, i) => (
@@ -61,16 +61,27 @@ function Star({ starId, marked }) {
 }
 
 const starStyle = css`
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   margin-bottom: 1rem;
   span {
-    cursor: pointer;
     display: inherit;
     font-size: 1.5rem;
     color: ${colors.warn[5]};
   }
 `;
+
+const cursor = readOnly =>
+  readOnly
+    ? css`
+        span {
+          cursor: default;
+        }
+      `
+    : css`
+        span {
+          cursor: pointer;
+        }
+      `;
 
 export default StarRating;

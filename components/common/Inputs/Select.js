@@ -202,6 +202,7 @@ const nativeSelectStyle = css`
 const divSelectStyle = css`
   width: 100%;
   color: inherit;
+  cursor: pointer;
   position: relative;
   border-radius: 4px;
   &:focus {
