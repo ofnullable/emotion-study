@@ -6,15 +6,15 @@ import AppBar from '../common/AppBar/AppBar';
 import Footer from './Footer';
 
 const menus = {
-  brand: {
+  home: {
     href: '/',
     name: 'HOME',
   },
-  directory: {
+  components: {
     href: '/components',
     name: 'components',
   },
-  inbox: {
+  forms: {
     href: '/forms',
     name: 'forms',
   },

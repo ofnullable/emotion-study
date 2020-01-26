@@ -28,7 +28,6 @@ const margin = (horizontal, gutter) => {
 };
 
 const align = position => {
-  console.log(position);
   switch (position) {
     case 'center':
       return css`
