@@ -111,21 +111,21 @@ function inbox() {
       <InputGroup>
         <Checkbox
           id="primaryCheckbox"
-          label="primary checkbox"
+          label="primary"
           checked={checkbox.primaryCheckbox}
           onChange={handleCheckboxChange}
           theme="primary"
         />
         <Checkbox
           id="secondaryCheckbox"
-          label="secondary checkbox"
+          label="secondary"
           checked={checkbox.secondaryCheckbox}
           onChange={handleCheckboxChange}
           theme="secondary"
         />
         <Checkbox
           id="errorCheckbox"
-          label="error checkbox"
+          label="error"
           checked={checkbox.errorCheckbox}
           onChange={handleCheckboxChange}
           theme="error"
@@ -134,7 +134,7 @@ function inbox() {
       <InputGroup>
         <Radio
           id="primary"
-          label="primary radio"
+          label="primary"
           checked={radioChecked === 'primary'}
           onChange={handleRadioChange}
           theme="primary"
@@ -142,7 +142,7 @@ function inbox() {
         />
         <Radio
           id="secondary"
-          label="secondary radio"
+          label="secondary"
           checked={radioChecked === 'secondary'}
           onChange={handleRadioChange}
           theme="secondary"
@@ -150,7 +150,7 @@ function inbox() {
         />
         <Radio
           id="error"
-          label="error radio"
+          label="error"
           checked={radioChecked === 'error'}
           onChange={handleRadioChange}
           theme="error"

@@ -16,6 +16,7 @@ import CardContent from '../components/common/Card/CardContent';
 import CardFooter from '../components/common/Card/CardFooter';
 import Dialog from '../components/common/Dialog';
 import { useWindowEvent } from '../utils';
+import media from '../styles/media';
 
 const initial = {
   primary: false,
@@ -222,7 +223,7 @@ function directory() {
         </Button>
       </ButtonGroup>
 
-      <div css={[{ display: 'flex', justifyContent: 'space-evenly', marginBottom: '1rem' }]}>
+      <div css={[avatarGroupWrapper]}>
         <div css={[avatarWrapper]}>
           <div style={{ display: 'inherit' }}>
             <Avatar size="small" src="http://placeimg.com/64/64/animals?1" />
@@ -262,11 +263,28 @@ const cardWrapper = css`
   margin-bottom: 1rem;
 `;
 
+const avatarGroupWrapper = css`
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+
+  ${media.up('md')} {
+    flex-direction: row;
+  }
+  ${media.down('md')} {
+    flex-direction: column;
+  }
+`;
+
 const avatarWrapper = css`
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  ${media.down('md')} {
+    flex-direction: column;
+    margin-bottom: 1rem;
+  }
 `;
 
 export default directory;

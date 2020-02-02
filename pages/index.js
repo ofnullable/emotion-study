@@ -56,6 +56,7 @@ const Home = () => {
           display: flex;
           flex-direction: row;
           justify-content: space-around;
+          overflow: auto;
         }
         .card {
           padding: 18px 18px 24px;

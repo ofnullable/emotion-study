@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
+import media from '../../../styles/media';
 
 function InputGroup({ horizontal, rightAlign, gutter, children }) {
   return <div css={[groupStyle, margin(horizontal, gutter), align(rightAlign)]}>{children}</div>;
@@ -13,6 +14,9 @@ InputGroup.defaultProps = {
 
 const groupStyle = css`
   margin-bottom: 1rem;
+  ${media.down('md')} {
+    overflow: auto;
+  }
 `;
 
 const margin = (horizontal, gutter) => {

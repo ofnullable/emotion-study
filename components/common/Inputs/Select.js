@@ -168,7 +168,7 @@ const conditionalStyle = native =>
           }
         }
 
-        ${media.down('sm')} {
+        ${media.down('md')} {
           & > div {
             display: none;
           }
