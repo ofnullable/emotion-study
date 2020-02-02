@@ -15,34 +15,33 @@ export default (() => {
   }
 
   function down(key) {
-    const endIndex = keys.indexOf(key) + 1;
-    const upperbound = values[keys[endIndex]];
+    const endIndex = keys.indexOf(key);
 
-    if (endIndex === keys.length) {
+    if (endIndex + 1 === keys.length) {
       // xl down applies to all sizes
       return up('xs');
     }
 
-    const value = typeof upperbound === 'number' && endIndex > 0 ? upperbound : key;
-    // return '@media (max-width:'.concat(value - step / 100).concat('px', ')');
+    const value = typeof values[key] === 'number' && endIndex > 0 ? values[key] : key;
     return `@media (max-width: ${value - 5 / 100}px)`;
   }
 
   function between(start, end) {
-    const endIndex = keys.indexOf(end) + 1;
+    const endIndex = keys.indexOf(end);
 
-    if (endIndex === keys.length) {
+    if (endIndex + 1 === keys.length) {
       return up(start);
     }
 
-    return (
-      '@media (min-width:'.concat(values[start]).concat('px', ') and ') +
-      '(max-width:'.concat(values[keys[endIndex]] - 5 / 100).concat('px', ')')
-    );
+    return `@media (min-width: ${values[start]}px) and (max-width: ${values[end] - 5 / 100}px)`;
   }
 
   function only(key) {
-    return between(key, key);
+    const index = keys.indexOf(key);
+    if (index === keys.length) {
+      return up(key);
+    }
+    return between(key, values[keys[index]]);
   }
 
   function width(key) {
