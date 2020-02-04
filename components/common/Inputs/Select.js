@@ -20,16 +20,34 @@ function Select({ id, theme, value, options, native, onChange }) {
 
 function DivSelect({ id, onChange, value, options }) {
   const [optionsVisible, setOptionsVisible] = useState(false);
+  const [hasFocus, setHasFocus] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const setDisplayNode = useRef();
 
-  const toggleVisible = () => {
-    setOptionsVisible(prev => !prev);
+  const handleFocus = () => {
+    setOptionsVisible(true);
   };
 
-  const handleChange = e => {
-    setDisplayNode.current.blur();
+  const handleBlur = () => {
+    setOptionsVisible(false);
+    setHasFocus(false);
+  };
+
+  const toggleVisible = e => {
+    e.preventDefault();
+    setHasFocus(_ => {
+      if (hasFocus) return setDisplayNode.current.blur();
+      return !hasFocus;
+    });
+  };
+
+  const handleSelect = e => {
     onChange(e);
+    setDisplayNode.current.blur();
+  };
+
+  const handleHover = i => () => {
+    setCurrentIndex(i);
   };
 
   const getTarget = e => {
@@ -53,8 +71,7 @@ function DivSelect({ id, onChange, value, options }) {
           return;
         case 'Enter':
           e.target = getTarget(e);
-          onChange(e);
-          setDisplayNode.current.blur();
+          handleSelect(e);
           return;
         case 'Escape':
           setDisplayNode.current.blur();
@@ -63,17 +80,14 @@ function DivSelect({ id, onChange, value, options }) {
     }
   };
 
-  const handleHover = i => () => {
-    setCurrentIndex(i);
-  };
-
   return (
     <>
       <div
         css={[divSelectStyle]}
         tabIndex={0}
-        onBlur={toggleVisible}
-        onFocus={toggleVisible}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onClick={toggleVisible}
         onKeyDown={handleKeyDown}
         ref={setDisplayNode}
       >
@@ -81,9 +95,9 @@ function DivSelect({ id, onChange, value, options }) {
         <ul css={[optionsStyle(optionsVisible)]}>
           {options.map((option, i) => (
             <li
-              data-id={id}
               key={option}
-              onClick={handleChange}
+              data-id={id}
+              onClick={handleSelect}
               onMouseOver={handleHover(i)}
               css={[i === currentIndex ? activeOptionStyle : '']}
             >
