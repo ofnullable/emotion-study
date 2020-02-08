@@ -109,6 +109,9 @@ function inbox() {
         />
       </InputGroup>
       <InputGroup>
+        <TextInput type="search" />
+      </InputGroup>
+      <InputGroup>
         <Checkbox
           id="primaryCheckbox"
           label="primary"

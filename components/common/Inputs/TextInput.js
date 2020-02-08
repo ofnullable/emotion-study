@@ -1,14 +1,22 @@
 import React from 'react';
+
+import Button from '../Button';
+
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core';
 import { colors } from '../../../styles/colors';
+import { MdSearch } from 'react-icons/md';
 
 function Input({ id, theme, label, type, value, width, fullWidth, onChange }) {
   return (
-    <div css={[inputStyle(width, fullWidth)]}>
-      <label css={[themes[theme]]} htmlFor={id}>
-        {label}
-      </label>
+    <div css={[type === 'search' ? searchStyle : inputStyle(width, fullWidth), themes[theme]]}>
+      {type === 'search' ? (
+        <Button iconOnly theme={theme}>
+          <MdSearch />
+        </Button>
+      ) : (
+        <label htmlFor={id}>{label}</label>
+      )}
       <input id={id} type={type} value={value} onChange={onChange} />
     </div>
   );
@@ -36,27 +44,56 @@ const inputStyle = (width, fullWidth) => css`
   }
 `;
 
+const searchStyle = css`
+  position: relative;
+
+  label {
+    display: block;
+  }
+
+  & > input {
+    width: 100%;
+    padding: 8px 12px 8px 36px;
+    border-radius: 4px;
+    &:focus {
+      outline: none;
+    }
+  }
+  & > button {
+    position: absolute;
+    top: 4px;
+    left: 2px;
+  }
+`;
+
 const themes = {
   default: css`
-    & + input {
+    & > input {
       border: 1px solid ${colors.gray[9]};
     }
   `,
   primary: css`
-    color: ${colors.primary[5]};
-    & + input {
+    & > label {
+      color: ${colors.primary[5]};
+    }
+    & > input {
       border: 1px solid ${colors.primary[5]};
     }
   `,
   secondary: css`
-    color: ${colors.secondary[5]};
-    & + input {
+    & > label {
+      color: ${colors.secondary[5]};
+    }
+    & > input {
       border: 1px solid ${colors.secondary[5]};
     }
   `,
   error: css`
-    color: ${colors.error[4]};
-    & + input {
+    & > label {
+      color: ${colors.error[4]};
+    }
+
+    & > input {
       border: 1px solid ${colors.error[4]};
     }
   `,

@@ -82,6 +82,9 @@ export const GlobalStyle = css`
   input {
     overflow: visible;
   }
+  input {
+    font-family: inherit;
+  }
   button,
   select {
     text-transform: none;
