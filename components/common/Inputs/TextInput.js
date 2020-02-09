@@ -8,14 +8,15 @@ import { colors } from '../../../styles/colors';
 import { MdSearch } from 'react-icons/md';
 
 function Input({ id, theme, label, type, value, width, fullWidth, onChange }) {
+  const isSearch = type === 'search';
+
   return (
-    <div css={[type === 'search' ? searchStyle : inputStyle(width, fullWidth), themes[theme]]}>
-      {type === 'search' ? (
+    <div css={[inputStyle(width, fullWidth, isSearch), themes[theme]]}>
+      <label htmlFor={id}>{label}</label>
+      {type === 'search' && (
         <Button iconOnly theme={theme}>
           <MdSearch />
         </Button>
-      ) : (
-        <label htmlFor={id}>{label}</label>
       )}
       <input id={id} type={type} value={value} onChange={onChange} />
     </div>
@@ -27,24 +28,8 @@ Input.defaultProps = {
   theme: 'default',
 };
 
-const inputStyle = (width, fullWidth) => css`
+const inputStyle = (width, fullWidth, isSearch) => css`
   width: ${fullWidth ? '100%' : width ? width : 'auto'};
-
-  label {
-    display: block;
-  }
-
-  & > input {
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 4px;
-    &:focus {
-      outline: none;
-    }
-  }
-`;
-
-const searchStyle = css`
   position: relative;
 
   label {
@@ -53,23 +38,33 @@ const searchStyle = css`
 
   & > input {
     width: 100%;
-    padding: 8px 12px 8px 36px;
-    border-radius: 4px;
+    padding: ${isSearch ? '8px 12px 8px 38px' : '8px 12px'};
+    border-radius: ${isSearch ? '4rem' : '4px'};
     &:focus {
       outline: none;
     }
   }
-  & > button {
-    position: absolute;
-    top: 4px;
-    left: 2px;
-  }
+
+  ${isSearch &&
+    css`
+      & > button {
+        position: absolute;
+        left: 4px;
+        bottom: 4px;
+      }
+    `}
 `;
 
 const themes = {
   default: css`
+    & > label {
+      color: ${colors.gray[6]};
+    }
     & > input {
-      border: 1px solid ${colors.gray[9]};
+      border: 1px solid ${colors.gray[3]};
+      &:focus {
+        border-color: ${colors.gray[6]};
+      }
     }
   `,
   primary: css`
@@ -82,10 +77,10 @@ const themes = {
   `,
   secondary: css`
     & > label {
-      color: ${colors.secondary[5]};
+      color: ${colors.secondary[6]};
     }
     & > input {
-      border: 1px solid ${colors.secondary[5]};
+      border: 1px solid ${colors.secondary[6]};
     }
   `,
   error: css`

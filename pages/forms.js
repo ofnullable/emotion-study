@@ -76,7 +76,7 @@ function inbox() {
   );
 
   return (
-    <form>
+    <div>
       <InputGroup>
         <TextInput
           id="primaryinput"
@@ -109,7 +109,10 @@ function inbox() {
         />
       </InputGroup>
       <InputGroup>
-        <TextInput type="search" />
+        <TextInput type="search" width="25%" />
+        <TextInput type="search" width="25%" theme="secondary" />
+        <TextInput type="search" width="25%" theme="primary" />
+        <TextInput type="search" width="25%" theme="error" />
       </InputGroup>
       <InputGroup>
         <Checkbox
@@ -226,7 +229,7 @@ function inbox() {
       <StarRating star={star} setStar={setStar} />
       <StarRating star={readOnlyStar} setStar={setReadOnlyStar} readOnly />
       <TextEditor />
-    </form>
+    </div>
   );
 }
 
