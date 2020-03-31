@@ -1,9 +1,6 @@
 const path = require('path');
 const withImages = require('next-images');
-const withCSS = require('@zeit/next-css');
 
-module.exports = withCSS(
-  withImages({
+module.exports = withImages({
     include: path.resolve(__dirname, 'node_modules/tui-editor'),
-  })
-);
+});

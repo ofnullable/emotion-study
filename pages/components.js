@@ -133,7 +133,7 @@ function directory() {
             hello world!
           </CardContent>
           <CardFooter align="right">
-            <Link href="/inbox">
+            <Link href="/">
               <a>
                 <Button theme="link">show details</Button>
               </a>
